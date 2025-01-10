@@ -1,8 +1,28 @@
-# React + Vite
+# Backend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Backend server 1
 
-Currently, two official plugins are available:
+- Will Handle Global Todos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Backend server 2
+
+- Will Handle Indiviual Todos
+- Will have authentication
+  - will use JWT to make sure user is not giving soe gibersih inputs
+- Will not need to login again and again
+  - will use JWT
+
+### Database
+
+- One Database to manage Both Server's
+  - Global todos will have a type Global
+  - Indivial tods will have a type Indivial
+- Schema
+  -
+
+# Front ENd
+
+- React:
+- How will we make sure and changes get updates will lest renders ?
+- For Now I'm working on back end Logic
+-
