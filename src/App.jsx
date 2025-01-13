@@ -1,10 +1,10 @@
 import "./App.css";
-import { HomePage } from "./components/Homepage";
+import { IndiviualTodo } from "./components/IndiviualTodo";
 
 function App() {
   return (
     <div>
-      <HomePage></HomePage>
+      <IndiviualTodo />
     </div>
   );
 }

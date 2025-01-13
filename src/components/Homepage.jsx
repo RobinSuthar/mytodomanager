@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useMutation } from "react-query";
+import { IndiviualTodo } from "./IndiviualTodo";
 
 export function HomePage() {
   const [globaltodos, setGlobalTodos] = useState([]);
@@ -30,7 +31,7 @@ export function HomePage() {
 
   useEffect(
     function () {
-      console.log("USE EFFECT CALLED AGAIN BASED ON COUNTER");
+      console.log("USE EFFEq");
       GetAllTodos();
     },
 
@@ -43,7 +44,14 @@ export function HomePage() {
       <div id="LeftSideDiv w-48">
         <nav className="p m-5 w-11">
           <AddTodo counter={counter} setCounter={setCounter}></AddTodo>
-          <CustomButton name={"Global"}> </CustomButton>
+          <CustomButton
+            name={"Global"}
+            onClick={() => {
+              <IndiviualTodo></IndiviualTodo>;
+            }}
+          >
+            {" "}
+          </CustomButton>
           <CustomButton name={"Personal"}> </CustomButton>
           <CustomButton name={"Organziton"}> </CustomButton>
         </nav>
