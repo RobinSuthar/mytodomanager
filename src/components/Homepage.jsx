@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useMutation } from "react-query";
 
 export function HomePage() {
   const [globaltodos, setGlobalTodos] = useState([]);
+
   async function GetAllTodos() {
     const AllTodosWithGlobalType = await axios.get(
       "http://localhost:3001/GlobalTodos/AllTodos"
@@ -10,6 +12,7 @@ export function HomePage() {
 
     setGlobalTodos(AllTodosWithGlobalType.data.allTodosWithGlobalType);
   }
+
   useEffect(function () {
     GetAllTodos();
   }, []);
@@ -20,6 +23,7 @@ export function HomePage() {
 
       <div id="LeftSideDiv w-48">
         <nav className="p m-5 w-11">
+          <AddTodo></AddTodo>
           <CustomButton name={"Global"}> </CustomButton>
           <CustomButton name={"Personal"}> </CustomButton>
           <CustomButton name={"Organziton"}> </CustomButton>
@@ -67,6 +71,44 @@ function DisplayGlobalTodos(props) {
       <h1 className="text-4xl">{props.title}</h1>
       <h3 className="text-2xl">{props.description}</h3>
       <h3 className="text-2xl">{props.isCompleted}</h3>
+    </div>
+  );
+}
+
+function AddTodo() {
+  const [title, setTitle] = useState("");
+
+  const [description, setDescription] = useState("");
+
+  const mutation = useMutation((newTodo) =>
+    axios.post("http://localhost:3001/GlobalTodos/CreateTodo", newTodo)
+  );
+
+  const submitData = () => {
+    mutation.mutate({ title, description });
+    document.querySelector("#Title").value = "";
+
+    document.querySelector("#Description").value = "";
+  };
+  return (
+    <div>
+      <input
+        id="Title"
+        name="title"
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
+      ></input>
+      <input
+        id="Description"
+        type="text"
+        name="description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Description"
+      ></input>
+      <button onClick={submitData}> Add Todo</button>
     </div>
   );
 }
