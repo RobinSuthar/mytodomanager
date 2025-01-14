@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { useMutation } from "react-query";
+import { AddTodo } from "./Organization/AddTodo";
 export function Organization() {
+  ///All Logic to Add A company is here
   const [companyName, setCompanyName] = useState("");
   const [companyPin, setCompanyPin] = useState("");
 
@@ -10,6 +12,8 @@ export function Organization() {
   );
   function HandleCompanyinfo() {
     //Logic To Upload info into Databse
+    localStorage.setItem("Companyname", companyName);
+    localStorage.setItem("Companypin", companyPin);
     mutation.mutate({ companyName, companyPin });
   }
   return (
@@ -29,16 +33,10 @@ export function Organization() {
         }}
       />
       <button onClick={HandleCompanyinfo}>Submit Company infoamtion </button>
+      <div>
+        <h1 className="text-3xl mt-7">Adding Todo</h1>
+        <AddTodo></AddTodo>
+      </div>
     </div>
   );
 }
-
-// app.post("/Company/Todos", async function (req, res) {
-//     const { name, author, title, description, importance, tag } = req.body;
-//     const ParsingCompanyTodo = CompanySchema.safeParse(req.body);
-//     console.log(ParsingCompanyTodo);
-//     if (!ParsingCompanyTodo.success) {
-//       return res.json({
-//         msg: "Thats incorrect format to send a compnay Todo",
-//       });
-//     }
