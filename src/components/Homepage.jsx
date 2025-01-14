@@ -72,11 +72,22 @@ export function HomePage() {
 }
 
 function DisplayGlobalTodos(props) {
+  const IsCompleted = props.isCompleted;
+
+  if (IsCompleted) {
+    return (
+      <div>
+        <h1>Done</h1>
+        <h1 className="text-xl">{props.title}</h1>
+        <h3 className="text-sm">{props.description}</h3>
+      </div>
+    );
+  }
   return (
-    <div className="gap-6 m-6 p-3  text-center border-4 border-black">
-      <h1 className="text-4xl">{props.title}</h1>
-      <h3 className="text-2xl">{props.description}</h3>
-      <h3 className="text-2xl">{props.isCompleted}</h3>
+    <div>
+      <h1>NOT DONE</h1>
+      <h1 className="text-xl">{props.title}</h1>
+      <h3 className="text-sm">{props.description}</h3>
     </div>
   );
 }
