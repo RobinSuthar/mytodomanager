@@ -1,10 +1,10 @@
 import "./App.css";
-import { IndiviualTodo } from "./components/IndiviualTodo";
+import { Organization } from "./components/Organization";
 
 function App() {
   return (
     <div>
-      <IndiviualTodo />
+      <Organization></Organization>
     </div>
   );
 }
