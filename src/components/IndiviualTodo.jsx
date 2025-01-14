@@ -1,9 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
+import Popup from "reactjs-popup";
+import { Selection } from "./NavigationBar/Selection";
+import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
+
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
   const [indiviualTodos, SetIndiviualTodos] = useState([]);
+  const [firstVisit, setFirstVisit] = useState(true);
   const mutauion = useMutation((newUser) =>
     axios.post("http://localhost:3001/users/CreateUser", newUser)
   );
@@ -16,6 +21,16 @@ export function IndiviualTodo() {
 
     SetIndiviualTodos(AllTodosWithGlobalType.data.allTodosWithIndiviualType);
   }
+  const MyPopup = () => (
+    <Popup trigger={firstVisit} position="right center">
+      <div>Popup content here!</div>
+    </Popup>
+  );
+
+  useEffect(() => {
+    MyPopup();
+    setFirstVisit(false);
+  }, []);
 
   useEffect(() => {
     GetAllIndivualTodos();
@@ -24,37 +39,42 @@ export function IndiviualTodo() {
   function SubmitData() {
     mutauion.mutate({ username });
     localStorage.setItem("Username", username);
+    setFirstVisit(false);
   }
 
-  function CHeckingLocvalSotage() {
-    const userName = localStorage.getItem("Username");
-    console.log(userName);
-  }
   return (
-    <div>
-      {console.log(username)}
-      <input
-        placeholder="Enter Your username "
-        type="text"
-        id="Username"
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
-      ></input>
-      <button onClick={SubmitData}> Submit</button>
-      <button onClick={CHeckingLocvalSotage}>Checking locakStorag</button>
-      <AddIndiviualTodo></AddIndiviualTodo>
-      {indiviualTodos.map((EachElemet) => {
-        return (
-          <div key={EachElemet._id}>
-            <DisplayIndiviualTodos
-              title={EachElemet.title}
-              description={EachElemet.description}
-              isCompleted={EachElemet.isCompleted}
-            ></DisplayIndiviualTodos>{" "}
-          </div>
-        );
-      })}
+    <div className="flex">
+      <div className="w-48">
+        <LeftSideNavBar></LeftSideNavBar>
+      </div>
+      <div>
+        {firstVisit ? (
+          <input
+            placeholder="Enter Your username "
+            type="text"
+            id="Username"
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          ></input>
+        ) : (
+          ""
+        )}
+
+        <button onClick={SubmitData}> {firstVisit ? " Submit" : ""}</button>
+        <AddIndiviualTodo></AddIndiviualTodo>
+        {indiviualTodos.map((EachElemet) => {
+          return (
+            <div key={EachElemet._id}>
+              <DisplayIndiviualTodos
+                title={EachElemet.title}
+                description={EachElemet.description}
+                isCompleted={EachElemet.isCompleted}
+              ></DisplayIndiviualTodos>{" "}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -73,7 +93,8 @@ function AddIndiviualTodo() {
       title: title,
       description: description,
     });
-
+    document.querySelector("#Title").value = "";
+    document.querySelector("#Description").value = "";
     console.log("Added");
   }
 
