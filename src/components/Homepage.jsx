@@ -7,6 +7,7 @@ import { Main } from "./Hero/Main";
 import tickiamge from "./Images/wrong.png";
 import done from "./Images/tick.png";
 import NotDone from "./Images/CircleWithoutHover.png";
+
 export function HomePage() {
   const [globaltodos, setGlobalTodos] = useState([]);
   const [buttonPressed, SetButtonPressed] = useState(0);
@@ -46,13 +47,11 @@ export function HomePage() {
     <div className="grid grid-cols-[14rem,8fr]">
       <div id="LeftSideDiv w-48">
         <LeftSideNavBar></LeftSideNavBar>
-        <nav className="p m-5 w-11">
-          <AddTodo counter={counter} setCounter={setCounter}></AddTodo>
-        </nav>
+        <nav className="p m-5 w-11"></nav>
       </div>
 
       <div id="RightSideDiv " className="">
-        <div className="flex-col justify-center ml-80">
+        <div className="flex-col justify-center ml-40 ">
           <Main></Main>
           <div className="mt-8  flex flex-row ">
             <img src={tickiamge} height={6} width={26}></img>
@@ -134,44 +133,6 @@ function DisplayGlobalTodos(props) {
           <h3 className="text-xs ">{props.time}</h3>
         </div>
       </div>
-    </div>
-  );
-}
-
-function AddTodo(props) {
-  var counter = props.counter;
-  const setCounter = props.setCounter;
-  const [title, setTitle] = useState("");
-
-  const [description, setDescription] = useState("");
-
-  const mutation = useMutation((newTodo) =>
-    axios.post("http://localhost:3001/GlobalTodos/CreateTodo", newTodo)
-  );
-
-  function submitData() {
-    mutation.mutate({ title, description });
-    document.querySelector("#Title").value = "";
-    document.querySelector("#Description").value = "";
-    setCounter((counter = counter + 1));
-  }
-  return (
-    <div>
-      <input
-        id="Title"
-        name="title"
-        type="text"
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-      ></input>
-      <input
-        id="Description"
-        type="text"
-        name="description"
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Description"
-      ></input>
-      <button onClick={submitData}> Add Todo</button>
     </div>
   );
 }
