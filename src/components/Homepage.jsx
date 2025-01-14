@@ -3,6 +3,7 @@ import axios from "axios";
 import { useMutation } from "react-query";
 import { IndiviualTodo } from "./IndiviualTodo";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
+import { Main } from "./Hero/Main";
 
 export function HomePage() {
   const [globaltodos, setGlobalTodos] = useState([]);
@@ -47,7 +48,13 @@ export function HomePage() {
           <AddTodo counter={counter} setCounter={setCounter}></AddTodo>
         </nav>
       </div>
+
       <div id="RightSideDiv " className="grid grid-rows-3 grid-cols-3 gap-4">
+        <div></div>
+        <div>
+          <Main></Main>
+        </div>
+        <div></div>
         {globaltodos.map((EachElemet) => {
           return (
             <div key={EachElemet._id}>

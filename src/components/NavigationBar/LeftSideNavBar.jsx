@@ -1,3 +1,6 @@
+import { AddTodo } from "./AddTodo";
+import { Selection } from "./Selection";
+
 export function LeftSideNavBar() {
   return (
     <div>
@@ -9,6 +12,8 @@ export function LeftSideNavBar() {
         />
         Random
       </div>
+      <AddTodo></AddTodo>
+      <Selection></Selection>
     </div>
   );
 }
