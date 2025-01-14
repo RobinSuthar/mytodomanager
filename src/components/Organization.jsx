@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useMutation } from "react-query";
 import { AddTodo } from "./Organization/AddTodo";
+import { DisplayAllCompanyTodo } from "./Organization/DisplayAllCompanyTodo";
 export function Organization() {
   ///All Logic to Add A company is here
   const [companyName, setCompanyName] = useState("");
@@ -36,6 +37,7 @@ export function Organization() {
       <div>
         <h1 className="text-3xl mt-7">Adding Todo</h1>
         <AddTodo></AddTodo>
+        <DisplayAllCompanyTodo></DisplayAllCompanyTodo>
       </div>
     </div>
   );

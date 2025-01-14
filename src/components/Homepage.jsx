@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useMutation } from "react-query";
 import { IndiviualTodo } from "./IndiviualTodo";
+import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 
 export function HomePage() {
   const [globaltodos, setGlobalTodos] = useState([]);
@@ -39,21 +40,11 @@ export function HomePage() {
   );
 
   return (
-    <div>
-      <NameOfTheWebsite name="MyWebsite"></NameOfTheWebsite>
+    <div className="grid grid-cols-[14rem,8fr]">
       <div id="LeftSideDiv w-48">
+        <LeftSideNavBar></LeftSideNavBar>
         <nav className="p m-5 w-11">
           <AddTodo counter={counter} setCounter={setCounter}></AddTodo>
-          <CustomButton
-            name={"Global"}
-            onClick={() => {
-              <IndiviualTodo></IndiviualTodo>;
-            }}
-          >
-            {" "}
-          </CustomButton>
-          <CustomButton name={"Personal"}> </CustomButton>
-          <CustomButton name={"Organziton"}> </CustomButton>
         </nav>
       </div>
       <div id="RightSideDiv " className="grid grid-rows-3 grid-cols-3 gap-4">
@@ -71,15 +62,6 @@ export function HomePage() {
       </div>
     </div>
   );
-}
-
-function NameOfTheWebsite(pros) {
-  return <div className="text-5xl flex justify-center m-6">{pros.name}</div>;
-}
-
-function CustomButton(props) {
-  // eslint-disable-next-line react/prop-types
-  return <button className="m-4 flex flex-col">{props.name}</button>;
 }
 
 function DisplayGlobalTodos(props) {
