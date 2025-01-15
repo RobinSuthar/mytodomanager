@@ -6,7 +6,7 @@ import x from "./Images/icons8-add-48.png";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import done from "./Images/tick.png";
 import NotDone from "./Images/CircleWithoutHover.png";
-
+import z from "./Images/checked.png";
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
   const [indiviualTodos, SetIndiviualTodos] = useState([]);
@@ -40,11 +40,11 @@ export function IndiviualTodo() {
       </div>
       <div className="md:ml-36 ml-24">
         {!localStorage.getItem("Username") ? (
-          <div className="w-56 mt-52">
-            <h1>Please Enter Your Name to Proceed</h1>
+          <div className=" mt-52">
+            <h1 className="text-2xl">Please Enter Your Name to Proceed</h1>
             <input
-              className=""
-              placeholder="Enter Your username "
+              className="w-full  mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
+              placeholder="Type Here..."
               type="text"
               id="Username"
               onChange={(e) => {
@@ -58,7 +58,14 @@ export function IndiviualTodo() {
 
         <button onClick={SubmitData}>
           {" "}
-          {!localStorage.getItem("Username") ? " Submit" : ""}
+          {!localStorage.getItem("Username") ? (
+            <div className="flex gap-2 mt-2">
+              <h1 className="text-2xl">Submit</h1>
+              <img height={4} width={36} src={z}></img>
+            </div>
+          ) : (
+            ""
+          )}
         </button>
         {!localStorage.getItem("Username") ? (
           <></>
@@ -105,23 +112,25 @@ export function IndiviualTodo() {
             })}
           </div>
           <div className="flex flex-col"></div>
-          {indiviualTodos.map((EachElemet) => {
-            var isCompleted = EachElemet.isCompleted;
-            if (isCompleted) {
-              return (
-                <div key={EachElemet._id}>
-                  <DisplayIndiviualTodos
-                    title={EachElemet.title}
-                    description={EachElemet.description}
-                    isCompleted={EachElemet.isCompleted}
-                    id={EachElemet._id}
-                  ></DisplayIndiviualTodos>{" "}
-                </div>
-              );
-            } else {
-              return;
-            }
-          })}
+          <div>
+            {indiviualTodos.map((EachElemet) => {
+              var isCompleted = EachElemet.isCompleted;
+              if (isCompleted) {
+                return (
+                  <div key={EachElemet._id}>
+                    <DisplayIndiviualTodosDone
+                      title={EachElemet.title}
+                      description={EachElemet.description}
+                      isCompleted={EachElemet.isCompleted}
+                      id={EachElemet._id}
+                    ></DisplayIndiviualTodosDone>{" "}
+                  </div>
+                );
+              } else {
+                return;
+              }
+            })}
+          </div>
         </div>
       </div>
     </div>
@@ -174,11 +183,50 @@ function AddIndiviualTodo() {
 function DisplayIndiviualTodos(props) {
   const isCompleted = props.isCompleted;
   const id = props.id;
+
+  const mutation = useMutation((updatedPost) =>
+    axios.put("http://localhost:3001/IndiviualTodos/Completed", updatedPost)
+  );
+
+  function UpdateTodo() {
+    mutation.mutate({ id });
+    window.location.reload();
+  }
+
   return (
     <div className=" flex flex-col ml-28">
       <div>
         <div className="flex mt-6">
-          <button>
+          <button onClick={UpdateTodo}>
+            <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
+          </button>
+          <h1 className="text-sm ml-6">{props.title}</h1>
+        </div>
+
+        <h3 className="text-xs ml-10">{props.description}</h3>
+      </div>
+    </div>
+  );
+}
+
+function DisplayIndiviualTodosDone(props) {
+  const isCompleted = props.isCompleted;
+  const id = props.id;
+
+  const mutation = useMutation((updatedPost) =>
+    axios.put("http://localhost:3001/Indiviualtodos/NotCompleted", updatedPost)
+  );
+
+  function UpdateTodo() {
+    mutation.mutate({ id });
+    window.location.reload();
+  }
+
+  return (
+    <div className=" flex flex-col ml-28">
+      <div>
+        <div className="flex mt-6">
+          <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
           </button>
           <h1 className="text-sm ml-6">{props.title}</h1>
