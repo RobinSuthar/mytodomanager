@@ -10,7 +10,7 @@ import NotDone from "./Images/CircleWithoutHover.png";
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
   const [indiviualTodos, SetIndiviualTodos] = useState([]);
-  const [firstVisit, setFirstVisit] = useState(true);
+  const [LocalStorageUsername, setLocalStorage] = useState(null);
   const mutauion = useMutation((newUser) =>
     axios.post("http://localhost:3001/users/CreateUser", newUser)
   );
@@ -23,16 +23,6 @@ export function IndiviualTodo() {
 
     SetIndiviualTodos(AllTodosWithGlobalType.data.allTodosWithIndiviualType);
   }
-  const MyPopup = () => (
-    <Popup trigger={firstVisit} position="right center">
-      <div>Popup content here!</div>
-    </Popup>
-  );
-
-  useEffect(() => {
-    MyPopup();
-    setFirstVisit(false);
-  }, []);
 
   useEffect(() => {
     GetAllIndivualTodos();
@@ -41,7 +31,6 @@ export function IndiviualTodo() {
   function SubmitData() {
     mutauion.mutate({ username });
     localStorage.setItem("Username", username);
-    setFirstVisit(false);
   }
 
   return (
@@ -50,21 +39,33 @@ export function IndiviualTodo() {
         <LeftSideNavBar></LeftSideNavBar>
       </div>
       <div>
-        {firstVisit ? (
-          <input
-            placeholder="Enter Your username "
-            type="text"
-            id="Username"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          ></input>
+        {!localStorage.getItem("Username") ? (
+          <div className="w-56 mt-52">
+            <h1>Please Enter Your Name to Proceed</h1>
+            <input
+              className=""
+              placeholder="Enter Your username "
+              type="text"
+              id="Username"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            ></input>
+          </div>
         ) : (
           ""
         )}
 
-        <button onClick={SubmitData}> {firstVisit ? " Submit" : ""}</button>
-        <AddIndiviualTodo></AddIndiviualTodo>
+        <button onClick={SubmitData}>
+          {" "}
+          {!localStorage.getItem("Username") ? " Submit" : ""}
+        </button>
+        {!localStorage.getItem("Username") ? (
+          <></>
+        ) : (
+          <AddIndiviualTodo></AddIndiviualTodo>
+        )}
+
         {indiviualTodos.map((EachElemet) => {
           return (
             <div key={EachElemet._id}>
