@@ -28,6 +28,11 @@ export function Organization() {
         <LeftSideNavBar></LeftSideNavBar>
       </div>
       <div>
+        <div className="flex justify-center mt-5 ml-14">
+          <h1 className="text-4xl">{localStorage.getItem("Companyname")}</h1>
+        </div>
+      </div>
+      <div>
         {!localStorage.getItem("Companypin") ? (
           <div>
             <div className="flex flex-col">
@@ -65,11 +70,11 @@ export function Organization() {
                   <div className="mt-16 flex ">
                     <div>
                       <button className="">
-                        <img height={24} width={36} src={x} alt="" />{" "}
+                        <img height={24} width={26} src={x} alt="" />{" "}
                       </button>
                     </div>
-                    <div className="text-xl font-semibold text-green-400 ml-2 mt-1">
-                      Add Personal Todo
+                    <div className="text-sm font-semibold text-green-400 ml-2 mt-1">
+                      Add Organizational Todo
                     </div>
                   </div>
                 }

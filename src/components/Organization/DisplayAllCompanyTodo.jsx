@@ -98,7 +98,7 @@ function DisplayTodos(props) {
 
   return (
     <div>
-      <div className="gap-6 m-6 p-3  text-center ">
+      <div className="gap-6 m-6 p-3  text-center border-2 rounded-2xl border-red-500 ">
         <div className="flex mt-6">
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
@@ -106,9 +106,7 @@ function DisplayTodos(props) {
           <h1 className="text-sm ml-6">{props.title}</h1>
         </div>
         <h3 className="text-xs ml-10">{props.description}</h3>
-        <h3 className="text-xs ml-10">
-          Status :{props.isCompleted ? "Done" : "NoteDone"}
-        </h3>
+
         <h3 className="text-xs ml-10">{props.author}</h3>
         <h3 className="text-xs ml-10">{props.importance}</h3>
         <h3 className="text-xs ml-10">{props.tag}</h3>
@@ -120,7 +118,7 @@ function DisplayTodos(props) {
 function DisplayTodosDone(props) {
   const isCompleted = props.isCompleted;
   const id = props.id;
-
+  console.log("This is clicked");
   const mutation = useMutation((updatedPost) =>
     axios.put("http://localhost:3001/Company/NotCompleted", updatedPost)
   );
@@ -132,7 +130,7 @@ function DisplayTodosDone(props) {
 
   return (
     <div>
-      <div className="gap-6 m-6 p-3  text-center ">
+      <div className="gap-6 m-6 p-3  text-center  border-2 rounded-2xl border-green-500  ">
         <div className="flex mt-6">
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
@@ -140,9 +138,7 @@ function DisplayTodosDone(props) {
           <h1 className="text-sm ml-6">{props.title}</h1>
         </div>
         <h3 className="text-xs ml-10">{props.description}</h3>
-        <h3 className="text-xs ml-10">
-          Status :{props.isCompleted ? "Done" : "NoteDone"}
-        </h3>
+
         <h3 className="text-xs ml-10">{props.author}</h3>
         <h3 className="text-xs ml-10">{props.importance}</h3>
         <h3 className="text-xs ml-10">{props.tag}</h3>
