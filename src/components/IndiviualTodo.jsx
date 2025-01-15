@@ -4,6 +4,8 @@ import { useMutation } from "react-query";
 import Popup from "reactjs-popup";
 import { Selection } from "./NavigationBar/Selection";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
+import done from "./Images/tick.png";
+import NotDone from "./Images/CircleWithoutHover.png";
 
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
@@ -44,7 +46,7 @@ export function IndiviualTodo() {
 
   return (
     <div className="flex">
-      <div className="w-48">
+      <div className="w-48 grid grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
       <div>
@@ -99,7 +101,7 @@ function AddIndiviualTodo() {
   }
 
   return (
-    <div className="bg-slate-400">
+    <div className="bg-slate-400 text-sm mt-3 ml-36">
       {" "}
       <input
         placeholder="Enter Titke "
@@ -123,13 +125,28 @@ function AddIndiviualTodo() {
 }
 
 function DisplayIndiviualTodos(props) {
+  const isCompleted = props.isCompleted;
   return (
-    <div>
-      <div className="gap-6 m-6 p-3  text-center border-4 border-black">
-        <h1 className="text-4xl">{props.title}</h1>
-        <h3 className="text-2xl">{props.description}</h3>
+    <div className="flex ml-28">
+      <div>
+        <div className="flex mt-6">
+          <button>
+            <img src={isCompleted ? NotDone : done} height={4} width={16}></img>
+          </button>
+          <h1 className="text-sm ml-6">{props.title}</h1>
+        </div>
 
-        <h3 className="text-2xl">{props.isCompleted}</h3>
+        <h3 className="text-xs ml-10">{props.description}</h3>
+      </div>
+
+      <div>
+        <div className="ml-56">
+          <div className="flex ">
+            <h1 className="text-sm ">{props.owner}</h1>
+          </div>
+
+          <h3 className="text-xs ">{props.time}</h3>
+        </div>
       </div>
     </div>
   );
