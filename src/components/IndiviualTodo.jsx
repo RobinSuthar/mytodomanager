@@ -10,7 +10,7 @@ import NotDone from "./Images/CircleWithoutHover.png";
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
   const [indiviualTodos, SetIndiviualTodos] = useState([]);
-  const [LocalStorageUsername, setLocalStorage] = useState(null);
+
   const mutauion = useMutation((newUser) =>
     axios.post("http://localhost:3001/users/CreateUser", newUser)
   );
@@ -38,7 +38,7 @@ export function IndiviualTodo() {
       <div className="w-48 grid grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
-      <div>
+      <div className="md:ml-52">
         {!localStorage.getItem("Username") ? (
           <div className="w-56 mt-52">
             <h1>Please Enter Your Name to Proceed</h1>
@@ -66,9 +66,9 @@ export function IndiviualTodo() {
           <div className="ml-56">
             <Popup
               trigger={
-                <div className="mt-16">
+                <div className="mt-16 flex ">
                   <div>
-                    <button className="mt-64a">
+                    <button className="">
                       <img height={24} width={36} src={x} alt="" />{" "}
                     </button>
                   </div>
@@ -77,24 +77,52 @@ export function IndiviualTodo() {
                   </div>
                 </div>
               }
-              position="right center"
+              position="left center"
             >
               <AddIndiviualTodo></AddIndiviualTodo>
             </Popup>
           </div>
         )}
 
-        {indiviualTodos.map((EachElemet) => {
-          return (
-            <div key={EachElemet._id}>
-              <DisplayIndiviualTodos
-                title={EachElemet.title}
-                description={EachElemet.description}
-                isCompleted={EachElemet.isCompleted}
-              ></DisplayIndiviualTodos>{" "}
-            </div>
-          );
-        })}
+        <div className="flex flex-row gap-24">
+          <div>
+            {indiviualTodos.map((EachElemet) => {
+              var isCompleted = EachElemet.isCompleted;
+              if (!isCompleted) {
+                return (
+                  <div key={EachElemet._id}>
+                    <DisplayIndiviualTodos
+                      title={EachElemet.title}
+                      description={EachElemet.description}
+                      isCompleted={EachElemet.isCompleted}
+                      id={EachElemet._id}
+                    ></DisplayIndiviualTodos>{" "}
+                  </div>
+                );
+              } else {
+                return;
+              }
+            })}
+          </div>
+          <div className="flex flex-col"></div>
+          {indiviualTodos.map((EachElemet) => {
+            var isCompleted = EachElemet.isCompleted;
+            if (isCompleted) {
+              return (
+                <div key={EachElemet._id}>
+                  <DisplayIndiviualTodos
+                    title={EachElemet.title}
+                    description={EachElemet.description}
+                    isCompleted={EachElemet.isCompleted}
+                    id={EachElemet._id}
+                  ></DisplayIndiviualTodos>{" "}
+                </div>
+              );
+            } else {
+              return;
+            }
+          })}
+        </div>
       </div>
     </div>
   );
@@ -145,27 +173,18 @@ function AddIndiviualTodo() {
 
 function DisplayIndiviualTodos(props) {
   const isCompleted = props.isCompleted;
+  const id = props.id;
   return (
-    <div className="flex ml-28">
+    <div className=" flex flex-col ml-28">
       <div>
         <div className="flex mt-6">
           <button>
-            <img src={isCompleted ? NotDone : done} height={4} width={16}></img>
+            <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
           </button>
           <h1 className="text-sm ml-6">{props.title}</h1>
         </div>
 
         <h3 className="text-xs ml-10">{props.description}</h3>
-      </div>
-
-      <div>
-        <div className="ml-56">
-          <div className="flex ">
-            <h1 className="text-sm ">{props.owner}</h1>
-          </div>
-
-          <h3 className="text-xs ">{props.time}</h3>
-        </div>
       </div>
     </div>
   );
