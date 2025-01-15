@@ -150,7 +150,7 @@ function DisplayGlobalTodosDone(props) {
     window.location.reload();
   }
   return (
-    <div className="flex">
+    <div className="flex mb-4">
       <div>
         <div className="flex">
           <button onClick={UpdateTodo}>

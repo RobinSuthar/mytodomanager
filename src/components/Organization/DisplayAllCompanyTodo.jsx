@@ -19,19 +19,25 @@ export function DisplayAllCompanyTodo() {
   }
   return (
     <div>
-      <div className="flex flex-row  ml-14  ">
-        <div className="mt-8  flex flex-row">
-          <div>
-            <img src={tickiamge} height={1} width={26}></img>
+      <div className="flex flex-row    ">
+        {!localStorage.getItem("Companyname") ? (
+          <></>
+        ) : (
+          <div className="flex flex-row  ml-14  ">
+            <div className="mt-8  flex flex-row">
+              <div>
+                <img src={tickiamge} height={1} width={26}></img>
+              </div>
+              <div className="text-sm font-medium mt-1">Over Due</div>
+            </div>
+            <div className="mt-8  flex flex-row ml-40">
+              <div>
+                <img src={done} height={1} width={26}></img>
+              </div>
+              <div className="text-sm font-medium mt-1">Completed</div>
+            </div>
           </div>
-          <div className="text-sm font-medium mt-1">Over Due</div>
-        </div>
-        <div className="mt-8  flex flex-row ml-36">
-          <div>
-            <img src={done} height={1} width={26}></img>
-          </div>
-          <div className="text-sm font-medium mt-1">Completed</div>
-        </div>
+        )}
       </div>
       <div className="flex  gap-16">
         <div>

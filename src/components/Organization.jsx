@@ -23,15 +23,11 @@ export function Organization() {
     mutation.mutate({ companyName, companyPin });
   }
   return (
-    <div className="flex ">
+    <div className="flex gap-28 ">
       <div className="grid grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
-      <div>
-        <div className="flex justify-center mt-5 ml-14">
-          <h1 className="text-4xl">{localStorage.getItem("Companyname")}</h1>
-        </div>
-      </div>
+
       <div>
         {!localStorage.getItem("Companypin") ? (
           <div>
@@ -61,19 +57,26 @@ export function Organization() {
           ""
         )}
         <div>
+          <div className="">
+            <div className=" mt-5 ml-56">
+              <h1 className="text-4xl">
+                {localStorage.getItem("Companyname")}
+              </h1>
+            </div>
+          </div>
           {!localStorage.getItem("Companyname") ? (
             <></>
           ) : (
             <div>
               <Popup
                 trigger={
-                  <div className="mt-16 flex ">
+                  <div className="mt-7 flex  ml-48">
                     <div>
                       <button className="">
                         <img height={24} width={26} src={x} alt="" />{" "}
                       </button>
                     </div>
-                    <div className="text-sm font-semibold text-green-400 ml-2 mt-1">
+                    <div className="text-sm font-semibold text-green-400  mt-1">
                       Add Organizational Todo
                     </div>
                   </div>
