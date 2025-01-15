@@ -4,6 +4,10 @@ import { useMutation } from "react-query";
 import { AddTodo } from "./Organization/AddTodo";
 import { DisplayAllCompanyTodo } from "./Organization/DisplayAllCompanyTodo";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
+import Popup from "reactjs-popup";
+
+import x from "./Images/icons8-add-48.png";
+
 export function Organization() {
   ///All Logic to Add A company is here
   const [companyName, setCompanyName] = useState("");
@@ -24,25 +28,58 @@ export function Organization() {
         <LeftSideNavBar></LeftSideNavBar>
       </div>
       <div>
-        {" "}
-        <input
-          type="text"
-          placeholder="Enter the Name Of you Company"
-          onChange={(e) => {
-            setCompanyName(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Set up Pin"
-          onChange={(e) => {
-            setCompanyPin(e.target.value);
-          }}
-        />
-        <button onClick={HandleCompanyinfo}>Submit Company infoamtion </button>
+        {!localStorage.getItem("Companypin") ? (
+          <div>
+            <div className="flex flex-col">
+              <input
+                className="w-80  mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
+                type="text"
+                placeholder="Enter the Name Of you Company"
+                onChange={(e) => {
+                  setCompanyName(e.target.value);
+                }}
+              />
+              <input
+                className="w-80   mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
+                type="text"
+                placeholder="Set up Pin"
+                onChange={(e) => {
+                  setCompanyPin(e.target.value);
+                }}
+              />
+            </div>
+            <div className="mt-4">
+              <button onClick={HandleCompanyinfo}>Submit </button>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         <div>
-          <h1 className="text-3xl mt-7">Adding Todo</h1>
-          <AddTodo></AddTodo>
+          {!localStorage.getItem("Companyname") ? (
+            <></>
+          ) : (
+            <div>
+              <Popup
+                trigger={
+                  <div className="mt-16 flex ">
+                    <div>
+                      <button className="">
+                        <img height={24} width={36} src={x} alt="" />{" "}
+                      </button>
+                    </div>
+                    <div className="text-xl font-semibold text-green-400 ml-2 mt-1">
+                      Add Personal Todo
+                    </div>
+                  </div>
+                }
+                position="left center"
+              >
+                <AddTodo></AddTodo>
+              </Popup>
+            </div>
+          )}
+
           <DisplayAllCompanyTodo></DisplayAllCompanyTodo>
         </div>
       </div>

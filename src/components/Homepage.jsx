@@ -140,6 +140,7 @@ function DisplayGlobalTodos(props) {
 function DisplayGlobalTodosDone(props) {
   const isCompleted = props.isCompleted;
   const id = props.id;
+
   const mutation = useMutation((updatedPost) =>
     axios.put("http://localhost:3001/Indiviualtodos/NotCompleted", updatedPost)
   );
