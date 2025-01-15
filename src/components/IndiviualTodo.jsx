@@ -38,7 +38,7 @@ export function IndiviualTodo() {
       <div className="w-48 grid grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
-      <div className="md:ml-52">
+      <div className="md:ml-36 ml-24">
         {!localStorage.getItem("Username") ? (
           <div className="w-56 mt-52">
             <h1>Please Enter Your Name to Proceed</h1>
@@ -84,7 +84,7 @@ export function IndiviualTodo() {
           </div>
         )}
 
-        <div className="flex flex-row gap-24">
+        <div className="flex flex-row gap-16">
           <div>
             {indiviualTodos.map((EachElemet) => {
               var isCompleted = EachElemet.isCompleted;
