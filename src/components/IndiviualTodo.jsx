@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import Popup from "reactjs-popup";
-import { Selection } from "./NavigationBar/Selection";
+import x from "./Images/icons8-add-48.png";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import done from "./Images/tick.png";
 import NotDone from "./Images/CircleWithoutHover.png";
@@ -63,7 +63,25 @@ export function IndiviualTodo() {
         {!localStorage.getItem("Username") ? (
           <></>
         ) : (
-          <AddIndiviualTodo></AddIndiviualTodo>
+          <div className="ml-56">
+            <Popup
+              trigger={
+                <div className="mt-16">
+                  <div>
+                    <button className="mt-64a">
+                      <img height={24} width={36} src={x} alt="" />{" "}
+                    </button>
+                  </div>
+                  <div className="text-xl font-semibold text-green-400 ml-2 mt-1">
+                    Add Personal Todo
+                  </div>
+                </div>
+              }
+              position="right center"
+            >
+              <AddIndiviualTodo></AddIndiviualTodo>
+            </Popup>
+          </div>
         )}
 
         {indiviualTodos.map((EachElemet) => {
@@ -102,7 +120,7 @@ function AddIndiviualTodo() {
   }
 
   return (
-    <div className="bg-slate-400 text-sm mt-3 ml-36">
+    <div className="">
       {" "}
       <input
         placeholder="Enter Titke "

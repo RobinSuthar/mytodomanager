@@ -1,7 +1,7 @@
 import x from "../Images/globe.png";
 import y from "../Images/personal.png";
 import z from "../Images/orgnaization.png";
-import { IndiviualTodo } from "../IndiviualTodo";
+
 import { Link } from "react-router-dom";
 
 export function Selection() {
