@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useMutation } from "react-query";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import { Main } from "./Hero/Main";
 import tickiamge from "./Images/wrong.png";
@@ -66,6 +66,7 @@ export function HomePage() {
                   return (
                     <div key={EachElemet._id} className="mt-4">
                       <DisplayGlobalTodos
+                        id={EachElemet._id}
                         title={EachElemet.title}
                         description={EachElemet.description}
                         isCompleted={EachElemet.isCompleted}
@@ -79,7 +80,7 @@ export function HomePage() {
                 }
               })}
             </div>
-            <div id="Two" className="md:ml-56 ml-40">
+            <div id="Two" className="md:ml-80 ml-40">
               <div className="mt-8  flex flex-row ">
                 <img src={done} height={6} width={26}></img>
                 <div className="text-sm font-medium mt-1">Completed</div>
@@ -114,11 +115,20 @@ export function HomePage() {
 
 function DisplayGlobalTodos(props) {
   const isCompleted = props.isCompleted;
+  const id = props.id;
+  const mutation = useMutation((updatedPost) =>
+    axios.put("http://localhost:3001/IndiviualTodos/Completed", updatedPost)
+  );
+
+  function UpdateTodo() {
+    mutation.mutate({ id });
+    window.location.reload();
+  }
   return (
-    <div className="flex ">
+    <div className="flex">
       <div>
-        <div className="flex ">
-          <button>
+        <div className="flex">
+          <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={4} width={16}></img>
           </button>
           <h1 className="text-sm ml-6">{props.title}</h1>
