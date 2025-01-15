@@ -20,13 +20,11 @@ export function HomePage() {
   }
 
   useEffect(function () {
-    console.log("INTIAL MOUNT OF USEEFFECT");
     GetAllTodos();
   }, []);
 
   useEffect(
     function () {
-      console.log("USE EFFECT CALLED AGAIN BASED ON COUNTER");
       GetAllTodos();
     },
 
@@ -35,7 +33,6 @@ export function HomePage() {
 
   useEffect(
     function () {
-      console.log("USE EFFEq");
       GetAllTodos();
     },
 
@@ -60,7 +57,6 @@ export function HomePage() {
                 <div className="text-sm font-medium mt-1">Over Due</div>
               </div>
               {globaltodos.map((EachElemet) => {
-                console.log(EachElemet);
                 var isCompleted = EachElemet.isCompleted;
                 if (!isCompleted) {
                   return (
@@ -88,17 +84,18 @@ export function HomePage() {
               {globaltodos.map((EachElemet) => {
                 var isCompleted = EachElemet.isCompleted;
                 const time = EachElemet.createdAt;
-                console.log(time);
+
                 if (isCompleted) {
                   return (
                     <div key={EachElemet._id} className="mt-4">
-                      <DisplayGlobalTodos
+                      <DisplayGlobalTodosDone
+                        id={EachElemet._id}
                         title={EachElemet.title}
                         description={EachElemet.description}
                         isCompleted={EachElemet.isCompleted}
                         owner={EachElemet.type}
                         time={EachElemet.createdAt}
-                      ></DisplayGlobalTodos>{" "}
+                      ></DisplayGlobalTodosDone>{" "}
                     </div>
                   );
                 } else {
@@ -130,6 +127,37 @@ function DisplayGlobalTodos(props) {
         <div className="flex">
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={4} width={16}></img>
+          </button>
+          <h1 className="text-sm ml-6">{props.title}</h1>
+        </div>
+
+        <h3 className="text-xs ml-10">{props.description}</h3>
+      </div>
+    </div>
+  );
+}
+
+function DisplayGlobalTodosDone(props) {
+  const isCompleted = props.isCompleted;
+  const id = props.id;
+  const mutation = useMutation((updatedPost) =>
+    axios.put("http://localhost:3001/Indiviualtodos/NotCompleted", updatedPost)
+  );
+
+  function UpdateTodo() {
+    mutation.mutate({ id });
+    window.location.reload();
+  }
+  return (
+    <div className="flex">
+      <div>
+        <div className="flex">
+          <button onClick={UpdateTodo}>
+            <img
+              src={!isCompleted ? NotDone : done}
+              height={4}
+              width={16}
+            ></img>
           </button>
           <h1 className="text-sm ml-6">{props.title}</h1>
         </div>
