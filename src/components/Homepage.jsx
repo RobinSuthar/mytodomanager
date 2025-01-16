@@ -6,9 +6,11 @@ import { Main } from "./Hero/Main";
 import tickiamge from "./Images/wrong.png";
 import done from "./Images/tick.png";
 import NotDone from "./Images/CircleWithoutHover.png";
+import { PushSpinner, WhisperSpinner } from "react-spinners-kit";
 
 export function HomePage() {
   const [globaltodos, setGlobalTodos] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [buttonPressed, SetButtonPressed] = useState(0);
   const [counter, setCounter] = useState(0);
   async function GetAllTodos() {
@@ -18,6 +20,12 @@ export function HomePage() {
 
     setGlobalTodos(AllTodosWithGlobalType.data.allTodosWithGlobalType);
   }
+
+  useEffect(function () {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   useEffect(function () {
     GetAllTodos();
@@ -40,72 +48,84 @@ export function HomePage() {
   );
 
   return (
-    <div className="grid grid-cols-[14rem,8fr]">
-      <div id="LeftSideDiv w-48">
-        <LeftSideNavBar></LeftSideNavBar>
-        <nav className="p m-5 w-11"></nav>
-      </div>
-
-      <div id="RightSideDiv ">
-        <div className="flex-col justify-center md:ml-40 ml-24- ">
-          <Main></Main>
-
-          <div className="flex flex-row">
-            <div id="One">
-              <div className="mt-8  flex flex-row ">
-                <img src={tickiamge} height={6} width={26}></img>
-                <div className="text-sm font-medium mt-1">Over Due</div>
-              </div>
-              {globaltodos.map((EachElemet) => {
-                var isCompleted = EachElemet.isCompleted;
-                if (!isCompleted) {
-                  return (
-                    <div key={EachElemet._id} className="mt-4">
-                      <DisplayGlobalTodos
-                        id={EachElemet._id}
-                        title={EachElemet.title}
-                        description={EachElemet.description}
-                        isCompleted={EachElemet.isCompleted}
-                        owner={EachElemet.type}
-                        time={EachElemet.createdAt}
-                      ></DisplayGlobalTodos>{" "}
-                    </div>
-                  );
-                } else {
-                  return;
-                }
-              })}
+    <div>
+      {loading && (
+        <div className="flex justify-center mt-80">
+          <WhisperSpinner></WhisperSpinner>
+        </div>
+      )}
+      {!loading && (
+        <div className="grid grid-cols-[14rem,8fr]">
+          <div>
+            <div id="LeftSideDiv w-48">
+              <LeftSideNavBar></LeftSideNavBar>
+              <nav className="p m-5 w-11"></nav>
             </div>
-            <div id="Two" className="md:ml-80 ml-40">
-              <div className="mt-8  flex flex-row ">
-                <img src={done} height={6} width={26}></img>
-                <div className="text-sm font-medium mt-1">Completed</div>
-              </div>
-              {globaltodos.map((EachElemet) => {
-                var isCompleted = EachElemet.isCompleted;
-                const time = EachElemet.createdAt;
+          </div>
+          <div>
+            <div id="RightSideDiv ">
+              <div className="flex-col justify-center md:ml-40 ml-24- ">
+                <Main></Main>
 
-                if (isCompleted) {
-                  return (
-                    <div key={EachElemet._id} className="mt-4">
-                      <DisplayGlobalTodosDone
-                        id={EachElemet._id}
-                        title={EachElemet.title}
-                        description={EachElemet.description}
-                        isCompleted={EachElemet.isCompleted}
-                        owner={EachElemet.type}
-                        time={EachElemet.createdAt}
-                      ></DisplayGlobalTodosDone>{" "}
+                <div className="flex flex-row">
+                  <div id="One">
+                    <div className="mt-8  flex flex-row ">
+                      <img src={tickiamge} height={6} width={26}></img>
+                      <div className="text-sm font-medium mt-1">Over Due</div>
                     </div>
-                  );
-                } else {
-                  return;
-                }
-              })}
+                    {globaltodos.map((EachElemet) => {
+                      var isCompleted = EachElemet.isCompleted;
+                      if (!isCompleted) {
+                        return (
+                          <div key={EachElemet._id} className="mt-4">
+                            <DisplayGlobalTodos
+                              id={EachElemet._id}
+                              title={EachElemet.title}
+                              description={EachElemet.description}
+                              isCompleted={EachElemet.isCompleted}
+                              owner={EachElemet.type}
+                              time={EachElemet.createdAt}
+                            ></DisplayGlobalTodos>{" "}
+                          </div>
+                        );
+                      } else {
+                        return;
+                      }
+                    })}
+                  </div>
+                  <div id="Two" className="md:ml-80 ml-40">
+                    <div className="mt-8  flex flex-row ">
+                      <img src={done} height={6} width={26}></img>
+                      <div className="text-sm font-medium mt-1">Completed</div>
+                    </div>
+                    {globaltodos.map((EachElemet) => {
+                      var isCompleted = EachElemet.isCompleted;
+                      const time = EachElemet.createdAt;
+
+                      if (isCompleted) {
+                        return (
+                          <div key={EachElemet._id} className="mt-4">
+                            <DisplayGlobalTodosDone
+                              id={EachElemet._id}
+                              title={EachElemet.title}
+                              description={EachElemet.description}
+                              isCompleted={EachElemet.isCompleted}
+                              owner={EachElemet.type}
+                              time={EachElemet.createdAt}
+                            ></DisplayGlobalTodosDone>{" "}
+                          </div>
+                        );
+                      } else {
+                        return;
+                      }
+                    })}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
