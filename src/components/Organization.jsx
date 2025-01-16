@@ -30,10 +30,10 @@ export function Organization() {
 
       <div>
         {!localStorage.getItem("Companypin") ? (
-          <div>
-            <div className="flex flex-col">
+          <div className="mt-36 ml-28">
+            <div className="flex flex-col justify-center">
               <input
-                className="w-80  mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
+                className="w-80    font-Robin mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
                 type="text"
                 placeholder="Enter the Name Of you Company"
                 onChange={(e) => {
@@ -41,7 +41,7 @@ export function Organization() {
                 }}
               />
               <input
-                className="w-80   mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
+                className="w-80 font-Robin  mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
                 type="text"
                 placeholder="Set up Pin"
                 onChange={(e) => {
@@ -50,7 +50,12 @@ export function Organization() {
               />
             </div>
             <div className="mt-4">
-              <button onClick={HandleCompanyinfo}>Submit </button>
+              <button
+                className="font-Robin text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
+                onClick={HandleCompanyinfo}
+              >
+                Submit{" "}
+              </button>
             </div>
           </div>
         ) : (

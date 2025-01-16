@@ -34,7 +34,7 @@ export function IndiviualTodo() {
   }
 
   return (
-    <div className="flex">
+    <div className="flex font-Robin">
       <div className="w-48 grid grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
@@ -158,9 +158,10 @@ function AddIndiviualTodo() {
   }
 
   return (
-    <div className="">
+    <div className=" font-Robin">
       {" "}
       <input
+        className="p-1"
         placeholder="Enter Titke "
         type="text"
         id="Title"
@@ -169,6 +170,7 @@ function AddIndiviualTodo() {
         }}
       ></input>{" "}
       <input
+        className="p-1"
         placeholder="ENter description "
         type="text"
         id="Description"
@@ -176,7 +178,13 @@ function AddIndiviualTodo() {
           setDescription(e.target.value);
         }}
       ></input>
-      <button onClick={submitData}> Submit</button>
+      <button
+        className="font-Robin text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
+        onClick={submitData}
+      >
+        {" "}
+        Submit
+      </button>
     </div>
   );
 }
@@ -195,16 +203,16 @@ function DisplayIndiviualTodos(props) {
   }
 
   return (
-    <div className=" flex flex-col ml-28">
+    <div className=" flex flex-col ml-28 border-2 p-3 m-6 rounded-xl border-red-600  hover:border-red-300">
       <div>
-        <div className="flex mt-6">
+        <div className="flex mt-1">
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
           </button>
-          <h1 className="text-sm ml-6">{props.title}</h1>
+          <h1 className="text-lg font-normal ml-6">{props.title}</h1>
         </div>
 
-        <h3 className="text-xs ml-10">{props.description}</h3>
+        <h3 className="text-xs font-extralight ml-10">{props.description}</h3>
       </div>
     </div>
   );
@@ -224,16 +232,20 @@ function DisplayIndiviualTodosDone(props) {
   }
 
   return (
-    <div className=" flex flex-col ml-28">
+    <div className=" flex flex-col ml-28 border-2  m-6 p-3 rounded-xl border-green-600  hover:border-green-300">
       <div>
-        <div className="flex mt-6">
+        <div className="flex mt-1">
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
           </button>
-          <h1 className="text-sm ml-6">{props.title}</h1>
+          <h1 className="text-xl ml-6 font-normal line-through">
+            {props.title}
+          </h1>
         </div>
 
-        <h3 className="text-xs ml-10">{props.description}</h3>
+        <h3 className="text-xs ml-6 font-light line-through">
+          {props.description}
+        </h3>
       </div>
     </div>
   );
