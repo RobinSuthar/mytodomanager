@@ -9,7 +9,7 @@ export function AddTodo() {
   const [counter, setCounter] = useState(0);
 
   return (
-    <div className="flex md:justify-center mt-7 mr-14">
+    <div className="flex md:justify-center justify-center mt-7 md:mr-14">
       <Popup
         trigger={
           <button className="flex p-2  hover:border-2 hover:border-green-400 rounded-2xl text-green-400 ">
@@ -45,7 +45,7 @@ function AddTodos(props) {
     window.location.reload();
   }
   return (
-    <div className="font-Robin">
+    <div className="font-Robin ">
       <input
         className="p-1"
         id="Title"
