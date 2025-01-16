@@ -67,8 +67,8 @@ export function HomePage() {
               <div className="flex-col justify-center md:ml-40 ml-24- ">
                 <Main></Main>
 
-                <div className="flex flex-row">
-                  <div id="One">
+                <div className="flex flex-row gap-32">
+                  <div id="One" className="">
                     <div className="mt-8  flex flex-row ">
                       <img src={tickiamge} height={6} width={26}></img>
                       <div className="text-sm font-medium mt-1">Over Due</div>
@@ -93,7 +93,7 @@ export function HomePage() {
                       }
                     })}
                   </div>
-                  <div id="Two" className="md:ml-80 ml-40">
+                  <div id="Two" className="md:ml-80 ">
                     <div className="mt-8  flex flex-row ">
                       <img src={done} height={6} width={26}></img>
                       <div className="text-sm font-medium mt-1">Completed</div>
@@ -170,9 +170,9 @@ function DisplayGlobalTodosDone(props) {
     window.location.reload();
   }
   return (
-    <div className="flex mb-4">
+    <div className="flex mb-4 border-2 p-3 rounded-xl border-green-600 hover:border-6 hover:border-green-300">
       <div>
-        <div className="flex">
+        <div className="flex ">
           <button onClick={UpdateTodo}>
             <img
               src={!isCompleted ? NotDone : done}
@@ -180,7 +180,7 @@ function DisplayGlobalTodosDone(props) {
               width={16}
             ></img>
           </button>
-          <h1 className="text-sm ml-6">{props.title}</h1>
+          <h1 className="text-sm ml-6 ">{props.title}</h1>
         </div>
 
         <h3 className="text-xs ml-10">{props.description}</h3>
