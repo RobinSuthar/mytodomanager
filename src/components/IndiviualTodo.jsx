@@ -154,6 +154,7 @@ function AddIndiviualTodo() {
     document.querySelector("#Title").value = "";
     document.querySelector("#Description").value = "";
     console.log("Added");
+    window.location.reload();
   }
 
   return (

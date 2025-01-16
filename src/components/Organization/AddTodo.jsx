@@ -34,11 +34,19 @@ export function AddTodo() {
       importance,
       tag,
     });
+
+    document.querySelector("#Title").value = "";
+    document.querySelector("#Description").value = "";
+    document.querySelector("#Author").value = "";
+    document.querySelector("#Tag").value = "";
+    document.querySelector("#Importance").value = "";
+    window.location.reload();
   }
   return (
     <div>
       <input
         placeholder="Author Name"
+        id="Author"
         onChange={(e) => {
           setAuthor(e.target.value);
         }}
@@ -46,6 +54,7 @@ export function AddTodo() {
 
       <input
         placeholder="Enter the Title"
+        id="Title"
         onChange={(e) => {
           setTitle(e.target.value);
         }}
@@ -53,6 +62,7 @@ export function AddTodo() {
 
       <input
         placeholder="Enter Description"
+        id="Description"
         onChange={(e) => {
           setDescription(e.target.value);
         }}
@@ -60,6 +70,7 @@ export function AddTodo() {
 
       <input
         placeholder="Enter importance 1-5"
+        id="Importance"
         type="number"
         onChange={(e) => {
           setImportance(e.target.value);
@@ -68,6 +79,7 @@ export function AddTodo() {
 
       <input
         placeholder="Tag Someone"
+        id="Tag"
         onChange={(e) => {
           setTag(e.target.value);
         }}

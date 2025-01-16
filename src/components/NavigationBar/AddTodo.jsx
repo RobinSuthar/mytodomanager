@@ -38,9 +38,9 @@ function AddTodos(props) {
     axios.post("http://localhost:3001/GlobalTodos/CreateTodo", newTodo)
   );
 
-  async function submitData() {
-    const a = await mutation.mutate({ title, description });
-    console.log(a);
+  function submitData() {
+    mutation.mutate({ title, description });
+
     document.querySelector("#Title").value = "";
     document.querySelector("#Description").value = "";
     setCounter((counter = counter + 1));
