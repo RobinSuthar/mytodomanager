@@ -142,16 +142,16 @@ function DisplayGlobalTodos(props) {
     window.location.reload();
   }
   return (
-    <div className="flex">
+    <div className="flex border-2 p-3 rounded-xl border-red-600  hover:border-red-300">
       <div>
         <div className="flex">
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={4} width={16}></img>
           </button>
-          <h1 className="text-sm ml-6">{props.title}</h1>
+          <h1 className="text-lg font-normal ml-6">{props.title}</h1>
         </div>
 
-        <h3 className="text-xs ml-10">{props.description}</h3>
+        <h3 className="text-base font-extralight ml-10">{props.description}</h3>
       </div>
     </div>
   );
@@ -170,20 +170,26 @@ function DisplayGlobalTodosDone(props) {
     window.location.reload();
   }
   return (
-    <div className="flex mb-4 border-2 p-3 rounded-xl border-green-600 hover:border-6 hover:border-green-300">
+    <div className="flex mb-4 border-2 p-3 rounded-xl border-green-600  hover:border-green-300">
       <div>
         <div className="flex ">
           <button onClick={UpdateTodo}>
             <img
               src={!isCompleted ? NotDone : done}
               height={4}
-              width={16}
+              width={25}
             ></img>
           </button>
-          <h1 className="text-sm ml-6 ">{props.title}</h1>
-        </div>
+          <div className="flex flex-col">
+            <h1 className="text-lg ml-6 font-normal line-through ">
+              {props.title}
+            </h1>
 
-        <h3 className="text-xs ml-10">{props.description}</h3>
+            <h3 className="text-base ml-6 font-light line-through">
+              {props.description}
+            </h3>
+          </div>
+        </div>
       </div>
     </div>
   );
