@@ -64,7 +64,7 @@ export function Organization() {
         <div>
           <div className="">
             <div className=" mt-5 ml-56">
-              <h1 className="text-4xl">
+              <h1 className="text-4xl font-Bungee ">
                 {localStorage.getItem("Companyname")}
               </h1>
             </div>
@@ -81,7 +81,8 @@ export function Organization() {
                         <img height={24} width={26} src={x} alt="" />{" "}
                       </button>
                     </div>
-                    <div className="text-sm font-semibold text-green-400  mt-1">
+
+                    <div className="text-sm    font-semibold text-green-400  mt-1">
                       Add Organizational Todo
                     </div>
                   </div>

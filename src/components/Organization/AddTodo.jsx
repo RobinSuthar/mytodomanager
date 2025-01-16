@@ -43,8 +43,9 @@ export function AddTodo() {
     window.location.reload();
   }
   return (
-    <div>
+    <div className="font-Robin">
       <input
+        className="p-1"
         placeholder="Author Name"
         id="Author"
         onChange={(e) => {
@@ -53,6 +54,7 @@ export function AddTodo() {
       ></input>
 
       <input
+        className="p-1"
         placeholder="Enter the Title"
         id="Title"
         onChange={(e) => {
@@ -61,6 +63,7 @@ export function AddTodo() {
       ></input>
 
       <input
+        className="p-1"
         placeholder="Enter Description"
         id="Description"
         onChange={(e) => {
@@ -69,6 +72,7 @@ export function AddTodo() {
       ></input>
 
       <input
+        className="p-1"
         placeholder="Enter importance 1-5"
         id="Importance"
         type="number"
@@ -78,13 +82,19 @@ export function AddTodo() {
       ></input>
 
       <input
+        className="p-1"
         placeholder="Tag Someone"
         id="Tag"
         onChange={(e) => {
           setTag(e.target.value);
         }}
       ></input>
-      <button onClick={handleClick}>Submit</button>
+      <button
+        className="ont-Robin text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
+        onClick={handleClick}
+      >
+        Submit
+      </button>
     </div>
   );
 }

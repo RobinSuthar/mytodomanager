@@ -79,7 +79,7 @@ export function IndiviualTodo() {
                       <img height={24} width={36} src={x} alt="" />{" "}
                     </button>
                   </div>
-                  <div className="text-xl font-semibold text-green-400 ml-2 mt-1">
+                  <div className="text-xl font   font-semibold text-green-400 ml-2 mt-1">
                     Add Personal Todo
                   </div>
                 </div>
