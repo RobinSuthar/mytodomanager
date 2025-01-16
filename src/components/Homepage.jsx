@@ -93,7 +93,11 @@ export function HomePage() {
                       }
                     })}
                   </div>
-                  <div id="Two" className="md:ml-40  ml-80 ">
+                  <div
+                    id="Two"
+                    className="md:ml-40 
+                   "
+                  >
                     <div className="mt-8  flex flex-row ">
                       <img src={done} height={15} width={30}></img>
                       <div className="text-lg font-Bungee font-medium mt-1">
