@@ -39,7 +39,7 @@ export function IndiviualTodo() {
       <div className="w-48 grid grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
-      <div className="md:ml-36 ml-24">
+      <div className="md:ml-16 ml-24">
         {!localStorage.getItem("Username") ? (
           <div className=" mt-52">
             <h1 className="text-2xl">Please Enter Your Name to Proceed</h1>
@@ -221,12 +221,12 @@ function DisplayIndiviualTodos(props) {
 
   return (
     <div className=" flex flex-col ml-28 border-2 p-3 m-6 rounded-xl border-red-600  hover:border-red-300">
-      <div>
+      <div className="">
         <div className="flex mt-1">
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
           </button>
-          <h1 className=" text-xl   font-bold  ml-6">{props.title}</h1>
+          <h1 className=" text-xl   font-bold  ml-6 mr-4">{props.title}</h1>
         </div>
 
         <h3 className="text-xs  font-extralight ml-10">{props.description}</h3>

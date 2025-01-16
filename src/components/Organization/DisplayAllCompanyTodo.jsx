@@ -23,7 +23,7 @@ export function DisplayAllCompanyTodo() {
         {!localStorage.getItem("Companyname") ? (
           <></>
         ) : (
-          <div className="flex flex-row  ml-14  ">
+          <div className="flex flex-row   lg:ml-4 xl:ml-24 ">
             <div className="mt-8  flex flex-row">
               <div>
                 <img src={tickiamge} height={1} width={26}></img>
