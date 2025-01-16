@@ -7,6 +7,7 @@ import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import done from "./Images/tick.png";
 import NotDone from "./Images/CircleWithoutHover.png";
 import z from "./Images/checked.png";
+import cross from "./Images/wrong.png";
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
   const [indiviualTodos, SetIndiviualTodos] = useState([]);
@@ -93,6 +94,14 @@ export function IndiviualTodo() {
 
         <div className="flex flex-row gap-16">
           <div>
+            {!localStorage.getItem("Username") ? (
+              ""
+            ) : (
+              <div className="mt-8 ml-24  flex flex-row ">
+                <img src={cross} height={6} width={30}></img>
+                <div className="text-lg  font-Bungee  mt-1">Over Due</div>
+              </div>
+            )}
             {indiviualTodos.map((EachElemet) => {
               var isCompleted = EachElemet.isCompleted;
               if (!isCompleted) {
@@ -113,6 +122,14 @@ export function IndiviualTodo() {
           </div>
           <div className="flex flex-col"></div>
           <div>
+            {!localStorage.getItem("Username") ? (
+              ""
+            ) : (
+              <div className="mt-8 ml-24  flex flex-row ">
+                <img src={done} height={6} width={30}></img>
+                <div className="text-lg  font-Bungee  mt-1">Completed</div>
+              </div>
+            )}
             {indiviualTodos.map((EachElemet) => {
               var isCompleted = EachElemet.isCompleted;
               if (isCompleted) {
@@ -209,10 +226,10 @@ function DisplayIndiviualTodos(props) {
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
           </button>
-          <h1 className="text-lg font-normal ml-6">{props.title}</h1>
+          <h1 className=" text-xl   font-bold  ml-6">{props.title}</h1>
         </div>
 
-        <h3 className="text-xs font-extralight ml-10">{props.description}</h3>
+        <h3 className="text-xs  font-extralight ml-10">{props.description}</h3>
       </div>
     </div>
   );
@@ -238,14 +255,10 @@ function DisplayIndiviualTodosDone(props) {
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
           </button>
-          <h1 className="text-xl ml-6 font-normal line-through">
-            {props.title}
-          </h1>
+          <h1 className="text-xl   font-bold  ml-6 ">{props.title}</h1>
         </div>
 
-        <h3 className="text-xs ml-6 font-light line-through">
-          {props.description}
-        </h3>
+        <h3 className="text-xs  font-extralight ml-10">{props.description}</h3>
       </div>
     </div>
   );

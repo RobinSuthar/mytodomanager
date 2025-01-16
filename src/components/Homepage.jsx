@@ -24,7 +24,7 @@ export function HomePage() {
   useEffect(function () {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
   useEffect(function () {
