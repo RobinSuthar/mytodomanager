@@ -50,7 +50,7 @@ export function HomePage() {
   return (
     <div>
       {loading && (
-        <div className="flex justify-center mt-80">
+        <div className="flex justify-center mt-80 md:mt-60">
           <WhisperSpinner></WhisperSpinner>
         </div>
       )}
@@ -64,14 +64,14 @@ export function HomePage() {
           </div>
           <div>
             <div id="RightSideDiv ">
-              <div className="flex-col justify-center md:ml-40 ml-24- ">
+              <div className="flex-col justify-center md:ml-26 ml-24 ">
                 <Main></Main>
 
-                <div className="flex flex-row gap-32">
+                <div className="flex flex-row md:gap-20 gap-32">
                   <div id="One" className="">
                     <div className="mt-8  flex flex-row ">
-                      <img src={tickiamge} height={6} width={26}></img>
-                      <div className="text-sm font-medium mt-1">Over Due</div>
+                      <img src={tickiamge} height={6} width={30}></img>
+                      <div className="text-lg  font-Bungee  mt-1">Over Due</div>
                     </div>
                     {globaltodos.map((EachElemet) => {
                       var isCompleted = EachElemet.isCompleted;
@@ -93,10 +93,12 @@ export function HomePage() {
                       }
                     })}
                   </div>
-                  <div id="Two" className="md:ml-80 ">
+                  <div id="Two" className="md:ml-40  ml-80 ">
                     <div className="mt-8  flex flex-row ">
-                      <img src={done} height={6} width={26}></img>
-                      <div className="text-sm font-medium mt-1">Completed</div>
+                      <img src={done} height={15} width={30}></img>
+                      <div className="text-lg font-Bungee font-medium mt-1">
+                        Completed
+                      </div>
                     </div>
                     {globaltodos.map((EachElemet) => {
                       var isCompleted = EachElemet.isCompleted;
@@ -142,7 +144,7 @@ function DisplayGlobalTodos(props) {
     window.location.reload();
   }
   return (
-    <div className="flex border-2 p-3 rounded-xl border-red-600  hover:border-red-300">
+    <div className=" font-Robin flex border-2 p-3 rounded-xl border-red-600  hover:border-red-300">
       <div>
         <div className="flex">
           <button onClick={UpdateTodo}>
@@ -151,7 +153,7 @@ function DisplayGlobalTodos(props) {
           <h1 className="text-lg font-normal ml-6">{props.title}</h1>
         </div>
 
-        <h3 className="text-base font-extralight ml-10">{props.description}</h3>
+        <h3 className="text-xs font-extralight ml-10">{props.description}</h3>
       </div>
     </div>
   );
@@ -170,9 +172,9 @@ function DisplayGlobalTodosDone(props) {
     window.location.reload();
   }
   return (
-    <div className="flex mb-4 border-2 p-3 rounded-xl border-green-600  hover:border-green-300">
+    <div className=" font-Robin flex mb-4 border-2 p-3 rounded-xl border-green-600  hover:border-green-300">
       <div>
-        <div className="flex ">
+        <div className="flex  ">
           <button onClick={UpdateTodo}>
             <img
               src={!isCompleted ? NotDone : done}
@@ -181,11 +183,11 @@ function DisplayGlobalTodosDone(props) {
             ></img>
           </button>
           <div className="flex flex-col">
-            <h1 className="text-lg ml-6 font-normal line-through ">
+            <h1 className="text-xl ml-6 font-normal line-through ">
               {props.title}
             </h1>
 
-            <h3 className="text-base ml-6 font-light line-through">
+            <h3 className="text-xs ml-6 font-light line-through">
               {props.description}
             </h3>
           </div>

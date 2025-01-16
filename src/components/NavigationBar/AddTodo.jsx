@@ -12,17 +12,15 @@ export function AddTodo() {
     <div className="flex justify-center mt-7 mr-14">
       <Popup
         trigger={
-          <button>
-            <img height={16} width={20} src={x} alt="" />{" "}
+          <button className="flex p-2  hover:border-2 hover:border-green-400 rounded-2xl text-green-400 ">
+            <img height={16} width={30} src={x} alt="" />{" "}
+            <div className="font-Robin  font-semibold ml-2 mt-1">Add Todo</div>
           </button>
         }
         position="right center"
       >
         <AddTodos counter={counter} setCounter={setCounter}></AddTodos>
       </Popup>
-      <div className="text-xs font-semibold text-green-400 ml-2 mt-1">
-        Add Todo
-      </div>
     </div>
   );
 }
@@ -47,8 +45,9 @@ function AddTodos(props) {
     window.location.reload();
   }
   return (
-    <div>
+    <div className="font-Robin">
       <input
+        className="p-1"
         id="Title"
         name="title"
         type="text"
@@ -56,13 +55,20 @@ function AddTodos(props) {
         placeholder="Title"
       ></input>
       <input
+        className="p-1"
         id="Description"
         type="text"
         name="description"
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Description"
       ></input>
-      <button onClick={submitData}> Add Todo</button>
+      <button
+        className="font-Robin text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
+        onClick={submitData}
+      >
+        {" "}
+        Add Todo
+      </button>
     </div>
   );
 }

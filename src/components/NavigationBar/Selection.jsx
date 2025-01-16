@@ -6,25 +6,31 @@ import { Link } from "react-router-dom";
 
 export function Selection() {
   return (
-    <div>
-      <div className="flex flex-row justify-center  mt-4 mr-14">
+    <div className="font-Bungee flex flex-col  text-xl text-left">
+      <div className="  flex flex-row justify-center  mt-4 mr-14">
         <Link to="/">
-          <img height={6} width={35} src={x}></img>
+          <div className="text-lg hover:underline   hover:text-xl hover:border-2 p-3 hover:border-green-500 rounded-2xl   ml-2 mt-2">
+            {" "}
+            Global{" "}
+          </div>
         </Link>
-        <div className="text-xs   ml-2 mt-2"> Global </div>
       </div>
       <div className="flex flex-row justify-center mt-1 mr-12">
         <Link to="/Personal">
-          <img height={6} width={19} src={y}></img>
+          <div className="text-lg hover:underline hover:text-xl hover:border-2 p-3 hover:border-green-500 rounded-2xl  ml-2 mt-1">
+            {" "}
+            Personal{" "}
+          </div>
         </Link>
-        <div className="text-xs   ml-2 mt-1"> Personal </div>
       </div>
 
-      <div className="flex flex-row justify-center mt-3 mr-12">
-        <Link to="/Organization" className="mt-1">
-          <img height={6} width={19} src={z}></img>
+      <div className="flex text-left flex-row justify-center mt-3 mr-12">
+        <Link to="/Organization" className="">
+          <div className="text-lg hover:underline hover:text-xl hover:border-2 p-3 hover:border-green-500 rounded-2xl    ml-2 mt-1">
+            {" "}
+            Company{" "}
+          </div>
         </Link>
-        <div className="text-xs   ml-2 mt-1"> Personal </div>
       </div>
     </div>
   );
