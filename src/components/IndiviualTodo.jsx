@@ -35,11 +35,11 @@ export function IndiviualTodo() {
   }
 
   return (
-    <div className="flex font-Robin">
-      <div className="w-48 grid grid-cols-[14rem,8fr]">
+    <div className="flex flex-col md:flex-row font-Robin">
+      <div className="md:w-48 md:grid md:grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
-      <div className="md:ml-16 ml-24">
+      <div className="md:ml-16 ml-0">
         {!localStorage.getItem("Username") ? (
           <div className=" mt-52">
             <h1 className="text-2xl">Please Enter Your Name to Proceed</h1>
@@ -71,33 +71,33 @@ export function IndiviualTodo() {
         {!localStorage.getItem("Username") ? (
           <></>
         ) : (
-          <div className="ml-56">
+          <div className="md:ml-56 flex justify-center">
             <Popup
               trigger={
-                <div className="mt-16 flex ">
+                <div className="md:mt-16 mt-4 flex ">
                   <div>
                     <button className="">
                       <img height={24} width={36} src={x} alt="" />{" "}
                     </button>
                   </div>
-                  <div className="text-xl font   font-semibold text-green-400 ml-2 mt-1">
+                  <div className="text-xl font md:mr-28   font-semibold text-green-400 ml-2 mt-1">
                     Add Personal Todo
                   </div>
                 </div>
               }
-              position="left center"
+              position="down center"
             >
               <AddIndiviualTodo></AddIndiviualTodo>
             </Popup>
           </div>
         )}
 
-        <div className="flex flex-row gap-16">
+        <div className="flex flex-row gap-8 md:gap-16">
           <div>
             {!localStorage.getItem("Username") ? (
               ""
             ) : (
-              <div className="mt-8 ml-24  flex flex-row ">
+              <div className="mt-8 md:ml-24  ml-8  flex flex-row ">
                 <img src={cross} height={6} width={30}></img>
                 <div className="text-lg  font-Bungee  mt-1">Over Due</div>
               </div>
@@ -125,7 +125,7 @@ export function IndiviualTodo() {
             {!localStorage.getItem("Username") ? (
               ""
             ) : (
-              <div className="mt-8 ml-24  flex flex-row ">
+              <div className="mt-8 md:ml-24   flex flex-row ">
                 <img src={done} height={6} width={30}></img>
                 <div className="text-lg  font-Bungee  mt-1">Completed</div>
               </div>
@@ -220,7 +220,7 @@ function DisplayIndiviualTodos(props) {
   }
 
   return (
-    <div className=" flex flex-col ml-28 border-2 p-3 m-6 rounded-xl border-red-600  hover:border-red-300">
+    <div className=" flex flex-col  ml-8 md:ml-28 border-2 p-3 m-6 rounded-xl border-red-600  hover:border-red-300">
       <div className="">
         <div className="flex mt-1">
           <button onClick={UpdateTodo}>
@@ -249,7 +249,7 @@ function DisplayIndiviualTodosDone(props) {
   }
 
   return (
-    <div className=" flex flex-col ml-28 border-2  m-6 p-3 rounded-xl border-green-600  hover:border-green-300">
+    <div className=" flex flex-col md:ml-28 border-2  m-6 p-3 rounded-xl border-green-600  hover:border-green-300">
       <div>
         <div className="flex mt-1">
           <button onClick={UpdateTodo}>

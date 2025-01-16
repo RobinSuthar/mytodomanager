@@ -3,7 +3,7 @@ import { Selection } from "./Selection";
 
 export function LeftSideNavBar() {
   return (
-    <div className="mt-9">
+    <div className="mt-9 p-2">
       <div className=" font-Bungee flex justify-center md:justify-start md:text-left m-2 gap-2 md:gap-9 md:mt-5">
         <img
           className="h-6 w-6 ml-5 rounded-3xl "
