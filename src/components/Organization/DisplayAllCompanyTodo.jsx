@@ -4,6 +4,8 @@ import done from "../Images/tick.png";
 import NotDone from "../Images/CircleWithoutHover.png";
 import tickiamge from "../Images/wrong.png";
 import { useMutation } from "react-query";
+const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
+
 export function DisplayAllCompanyTodo() {
   const [CompanyTodos, SetCompanyTodos] = useState([]);
 
@@ -11,7 +13,7 @@ export function DisplayAllCompanyTodo() {
     GetAllTodos();
   }, []);
   async function GetAllTodos() {
-    const AllTodos = await axios.get("http://localhost:3001/Company/AllTodos", {
+    const AllTodos = await axios.get(`${BACKENDSERVER}/Company/AllTodos`, {
       headers: { Companyname: localStorage.getItem("Companyname") },
     });
 
@@ -94,12 +96,14 @@ function DisplayTodos(props) {
   const isCompleted = props.isCompleted;
   const id = props.id;
   const mutation = useMutation((updatedPost) =>
-    axios.put("http://localhost:3001/Company/isCompleted", updatedPost)
+    axios.put(`${BACKENDSERVER}/Company/isCompleted`, updatedPost)
   );
 
   function UpdateTodo() {
     mutation.mutate({ id });
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   return (
@@ -126,12 +130,14 @@ function DisplayTodosDone(props) {
   const id = props.id;
 
   const mutation = useMutation((updatedPost) =>
-    axios.put("http://localhost:3001/Company/NotCompleted", updatedPost)
+    axios.put(`${BACKENDSERVER}/Company/NotCompleted`, updatedPost)
   );
 
   function UpdateTodo() {
     mutation.mutate({ id });
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   return (

@@ -4,6 +4,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useMutation } from "react-query";
 import axios from "axios";
+const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 
 export function AddTodo() {
   const [counter, setCounter] = useState(0);
@@ -33,7 +34,7 @@ function AddTodos(props) {
   const [description, setDescription] = useState("");
 
   const mutation = useMutation((newTodo) =>
-    axios.post("http://localhost:3001/GlobalTodos/CreateTodo", newTodo)
+    axios.post(`${BACKENDSERVER}/GlobalTodos/CreateTodo`, newTodo)
   );
 
   function submitData() {
@@ -42,7 +43,9 @@ function AddTodos(props) {
     document.querySelector("#Title").value = "";
     document.querySelector("#Description").value = "";
     setCounter((counter = counter + 1));
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
   return (
     <div className="font-Robin ">

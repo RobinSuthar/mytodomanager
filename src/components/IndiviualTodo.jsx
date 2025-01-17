@@ -8,17 +8,19 @@ import done from "./Images/tick.png";
 import NotDone from "./Images/CircleWithoutHover.png";
 import z from "./Images/checked.png";
 import cross from "./Images/wrong.png";
+const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
+
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
   const [indiviualTodos, SetIndiviualTodos] = useState([]);
 
   const mutauion = useMutation((newUser) =>
-    axios.post("http://localhost:3001/users/CreateUser", newUser)
+    axios.post(`${BACKENDSERVER}/users/CreateUser`, newUser)
   );
 
   async function GetAllIndivualTodos() {
     const AllTodosWithGlobalType = await axios.get(
-      "http://localhost:3001/Indiviual/ParticulatIndiviualTodos",
+      `${BACKENDSERVER}/Indiviual/ParticulatIndiviualTodos`,
       { headers: { username: localStorage.getItem("Username") } }
     );
 
@@ -162,7 +164,7 @@ function AddIndiviualTodo() {
   const [description, setDescription] = useState("");
 
   const muation1 = useMutation((newTodod) => {
-    axios.post("http://localhost:3001/Indiviual/CreateTodo", newTodod);
+    axios.post(`${BACKENDSERVER}/Indiviual/CreateTodo`, newTodod);
   });
 
   function submitData() {
@@ -173,8 +175,9 @@ function AddIndiviualTodo() {
     });
     document.querySelector("#Title").value = "";
     document.querySelector("#Description").value = "";
-
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   return (
@@ -214,12 +217,14 @@ function DisplayIndiviualTodos(props) {
   const id = props.id;
 
   const mutation = useMutation((updatedPost) =>
-    axios.put("http://localhost:3001/IndiviualTodos/Completed", updatedPost)
+    axios.put(`${BACKENDSERVER}/IndiviualTodos/Completed`, updatedPost)
   );
 
   function UpdateTodo() {
     mutation.mutate({ id });
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   return (
@@ -243,12 +248,14 @@ function DisplayIndiviualTodosDone(props) {
   const id = props.id;
 
   const mutation = useMutation((updatedPost) =>
-    axios.put("http://localhost:3001/Indiviualtodos/NotCompleted", updatedPost)
+    axios.put(`${BACKENDSERVER}/Indiviualtodos/NotCompleted`, updatedPost)
   );
 
   function UpdateTodo() {
     mutation.mutate({ id });
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   return (

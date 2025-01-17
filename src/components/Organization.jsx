@@ -5,7 +5,7 @@ import { AddTodo } from "./Organization/AddTodo";
 import { DisplayAllCompanyTodo } from "./Organization/DisplayAllCompanyTodo";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import Popup from "reactjs-popup";
-
+const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 import x from "./Images/icons8-add-48.png";
 
 export function Organization() {
@@ -14,7 +14,7 @@ export function Organization() {
   const [companyPin, setCompanyPin] = useState("");
 
   const mutation = useMutation((newTodo) =>
-    axios.post("http://localhost:3001/Organzations/CreateOrganztion", newTodo)
+    axios.post(`${BACKENDSERVER}/Organzations/CreateOrganztion`, newTodo)
   );
   function HandleCompanyinfo() {
     //Logic To Upload info into Databse

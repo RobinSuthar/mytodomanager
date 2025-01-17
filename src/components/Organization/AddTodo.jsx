@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { useMutation } from "react-query";
+const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 
 export function AddTodo() {
   const mutation = useMutation((newTodo) => {
-    axios.post("http://localhost:3001/Company/Todos", newTodo);
+    axios.post(`${BACKENDSERVER}/Company/Todos`, newTodo);
   });
 
   const [author, setAuthor] = useState("");
@@ -30,7 +31,9 @@ export function AddTodo() {
     document.querySelector("#Author").value = "";
     document.querySelector("#Tag").value = "";
     document.querySelector("#Importance").value = "";
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
   return (
     <div className="font-Robin">

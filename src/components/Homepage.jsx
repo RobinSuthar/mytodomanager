@@ -7,6 +7,7 @@ import tickiamge from "./Images/wrong.png";
 import done from "./Images/tick.png";
 import NotDone from "./Images/CircleWithoutHover.png";
 import { PushSpinner, WhisperSpinner } from "react-spinners-kit";
+const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 
 export function HomePage() {
   const [globaltodos, setGlobalTodos] = useState([]);
@@ -15,7 +16,7 @@ export function HomePage() {
   const [counter, setCounter] = useState(0);
   async function GetAllTodos() {
     const AllTodosWithGlobalType = await axios.get(
-      "http://localhost:3001/GlobalTodos/AllTodos"
+      `${BACKENDSERVER}/GlobalTodos/AllTodos`
     );
 
     setGlobalTodos(AllTodosWithGlobalType.data.allTodosWithGlobalType);
@@ -140,12 +141,14 @@ function DisplayGlobalTodos(props) {
   const isCompleted = props.isCompleted;
   const id = props.id;
   const mutation = useMutation((updatedPost) =>
-    axios.put("http://localhost:3001/IndiviualTodos/Completed", updatedPost)
+    axios.put(`${BACKENDSERVER}/IndiviualTodos/Completed`, updatedPost)
   );
 
   function UpdateTodo() {
     mutation.mutate({ id });
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   }
   return (
     <div className=" font-Robin flex border-2 p-3 rounded-xl border-red-600  hover:border-red-300">
@@ -168,12 +171,14 @@ function DisplayGlobalTodosDone(props) {
   const id = props.id;
 
   const mutation = useMutation((updatedPost) =>
-    axios.put("http://localhost:3001/Indiviualtodos/NotCompleted", updatedPost)
+    axios.put(`${BACKENDSERVER}/Indiviualtodos/NotCompleted`, updatedPost)
   );
 
   function UpdateTodo() {
     mutation.mutate({ id });
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   }
   return (
     <div className=" font-Robin flex mb-4 border-2 p-3 rounded-xl border-green-600  hover:border-green-300">
