@@ -55,7 +55,7 @@ export function HomePage() {
         </div>
       )}
       {!loading && (
-        <div className="md:grid md:grid-cols-[14rem,8fr]">
+        <div className="md:grid md:grid-cols-[14rem,8fr] ">
           <div>
             <div id="LeftSideDiv w-48">
               <LeftSideNavBar></LeftSideNavBar>
@@ -63,11 +63,11 @@ export function HomePage() {
             </div>
           </div>
           <div>
-            <div id="RightSideDiv ">
+            <div id="RightSideDiv  ">
               <div className="flex-col justify-center md:ml-26 ml-2 ">
                 <Main></Main>
 
-                <div className="flex flex-row md:gap-20 gap-12">
+                <div className="flex flex-row md:gap-20 gap-12 md:ml-24">
                   <div id="One" className="">
                     <div className="mt-8  flex flex-row ">
                       <img src={tickiamge} height={6} width={30}></img>
