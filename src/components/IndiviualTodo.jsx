@@ -39,10 +39,13 @@ export function IndiviualTodo() {
       <div className="md:w-48 md:grid md:grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
-      <div className="md:ml-16 ml-0">
+      <div className=" md:ml-16 ml-0">
         {!localStorage.getItem("Username") ? (
-          <div className=" mt-52">
-            <h1 className="text-2xl">Please Enter Your Name to Proceed</h1>
+          <div className="mt-10 md:mt-52">
+            <h1 className="md:text-2xl text-xl">
+              Please Enter Your Name to Proceed
+            </h1>
+
             <input
               className="w-full  mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
               placeholder="Type Here..."
@@ -92,7 +95,7 @@ export function IndiviualTodo() {
           </div>
         )}
 
-        <div className="flex flex-row gap-8 md:gap-16">
+        <div className="flex flex-row gap-4 md:gap-16">
           <div>
             {!localStorage.getItem("Username") ? (
               ""
@@ -170,7 +173,7 @@ function AddIndiviualTodo() {
     });
     document.querySelector("#Title").value = "";
     document.querySelector("#Description").value = "";
-    console.log("Added");
+
     window.location.reload();
   }
 

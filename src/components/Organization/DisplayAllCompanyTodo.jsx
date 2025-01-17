@@ -23,14 +23,14 @@ export function DisplayAllCompanyTodo() {
         {!localStorage.getItem("Companyname") ? (
           <></>
         ) : (
-          <div className="flex flex-row   lg:ml-4 xl:ml-24 ">
+          <div className="flex flex-row   lg:ml-4 xl:ml-24 ml-4">
             <div className="mt-8  flex flex-row">
               <div>
                 <img src={tickiamge} height={1} width={26}></img>
               </div>
               <div className="text-sm font-medium mt-1">Over Due</div>
             </div>
-            <div className="mt-8  flex flex-row ml-40">
+            <div className="mt-8  flex flex-row ml-24 md:ml-40">
               <div>
                 <img src={done} height={1} width={26}></img>
               </div>
@@ -39,7 +39,7 @@ export function DisplayAllCompanyTodo() {
           </div>
         )}
       </div>
-      <div className="flex  gap-16">
+      <div className="flex  md:gap-16">
         <div>
           {CompanyTodos.map((EachElemet) => {
             var isCompleted = EachElemet.isCompleted;
@@ -124,7 +124,7 @@ function DisplayTodos(props) {
 function DisplayTodosDone(props) {
   const isCompleted = props.isCompleted;
   const id = props.id;
-  console.log("This is clicked");
+
   const mutation = useMutation((updatedPost) =>
     axios.put("http://localhost:3001/Company/NotCompleted", updatedPost)
   );

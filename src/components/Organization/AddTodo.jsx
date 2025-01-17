@@ -1,13 +1,3 @@
-// app.post("/Company/Todos", async function (req, res) {
-//     const { name, author, title, description, importance, tag } = req.body;
-//     const ParsingCompanyTodo = CompanySchema.safeParse(req.body);
-//     console.log(ParsingCompanyTodo);
-//     if (!ParsingCompanyTodo.success) {
-//       return res.json({
-//         msg: "Thats incorrect format to send a compnay Todo",
-//       });
-//     }
-
 import axios from "axios";
 import { useState } from "react";
 import { useMutation } from "react-query";
@@ -90,7 +80,7 @@ export function AddTodo() {
         }}
       ></input>
       <button
-        className="ont-Robin text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
+        className="font-Robin text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
         onClick={handleClick}
       >
         Submit
