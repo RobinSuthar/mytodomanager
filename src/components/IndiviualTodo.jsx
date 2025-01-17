@@ -5,7 +5,7 @@ import Popup from "reactjs-popup";
 import x from "./Images/icons8-add-48.png";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import done from "./Images/tick.png";
-import NotDone from "./Images/CircleWithoutHover.png";
+import NotDone from "./Images/circleWithoutHover.png";
 import z from "./Images/checked.png";
 import cross from "./Images/wrong.png";
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;

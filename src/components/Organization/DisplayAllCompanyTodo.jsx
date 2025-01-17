@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import done from "../Images/tick.png";
-import NotDone from "../Images/CircleWithoutHover.png";
+import NotDone from "../Images/circleWithoutHover.png";
 import tickiamge from "../Images/wrong.png";
 import { useMutation } from "react-query";
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
