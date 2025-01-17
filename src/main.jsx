@@ -19,8 +19,8 @@ createRoot(document.getElementById("root")).render(
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/Personal" element={<IndiviualTodo />} />
-        <Route path="/Organization" element={<Organization />} />
+        <Route path="/personal" element={<IndiviualTodo />} />
+        <Route path="/organization" element={<Organization />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
