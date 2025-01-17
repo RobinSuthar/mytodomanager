@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "../Homepage.jsx";
-import Organization from "../Organization.jsx";
-import Indiviual from "../IndiviualTodo.jsx";
+
 
 export function Selection() {
   return (
-    <BrowserRouter>
+    
       <div className="font-Bungee flex md:flex-col  text-sm md:text-xl text-left">
         <div className="  flex flex-row  justify-left md:justify-center  mt-4 mr-14">
           <Link to="/">
@@ -34,11 +32,6 @@ export function Selection() {
           </Link>
         </div>
       </div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/personal" element={<Indiviual />} />
-        <Route path="/organization" element={<Organization />} />
-      </Routes>
-    </BrowserRouter>
+
   );
 }
