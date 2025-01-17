@@ -16,7 +16,7 @@ import { Organization } from "./components/Organization.jsx";
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
-    <Router basename="https://www.mytodomanager.com" >
+    <Router >
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/personal" element={<IndiviualTodo />} />
