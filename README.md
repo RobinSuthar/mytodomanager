@@ -25,4 +25,5 @@
 - React:
 - How will we make sure and changes get updates will lest renders ?
 - For Now I'm working on back end Logic
--
+- Everthing is inetgreated and wokring fine
+- W
