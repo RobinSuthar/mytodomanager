@@ -8,6 +8,7 @@ import done from "./Images/tick.png";
 import NotDone from "./Images/wrong.png";
 import { PushSpinner, WhisperSpinner } from "react-spinners-kit";
 import Banner from "./Images/Banner12.png";
+import Banner2 from "./Images/HCS.png";
 import newTick from "./Images/newtick.png";
 import { AddTodo } from "./NavigationBar/AddTodo";
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
@@ -74,7 +75,7 @@ export function HomePage() {
               <div className="flex-col h-screen bg-black justify-center md:ml-26  ">
                 <Main></Main>
                 <div className="max-w-full border-b-2 border-Robin2">
-                  <img className="h-36 w-full " src={Banner} alt="" />
+                  <img className="h-36 w-full " src={Banner2} alt="" />
                 </div>
                 <div className="flex flex-col  justify-center mt-10 ml-24">
                   <div className="font-Notion text-3xl font-extrabold">
