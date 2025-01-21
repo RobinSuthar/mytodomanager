@@ -37,11 +37,11 @@ export function IndiviualTodo() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row  text-white font-Robin bg-black">
-      <div className="md:w-48 md:grid md:grid-cols-[14rem,8fr]">
+    <div className="flex flex-col md:flex-row  text-white font-Robin ">
+      <div className=" w-64">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
-      <div className=" md:ml-16 ml-0">
+      <div className=" w-screen bg-Robin4">
         {!localStorage.getItem("Username") ? (
           <div className="mt-10 md:mt-52">
             <h1 className="md:text-2xl text-xl">
@@ -77,6 +77,9 @@ export function IndiviualTodo() {
           <></>
         ) : (
           <div className="md:ml-56 flex justify-center">
+            <div className="font-bold  mt-12 text-3xl text-gray-100">
+              Welcome, {localStorage.getItem("Username")}
+            </div>
             <Popup
               trigger={
                 <div className="md:mt-16 mt-4 flex ">
@@ -97,27 +100,30 @@ export function IndiviualTodo() {
           </div>
         )}
 
-        <div className="flex flex-row gap-4 md:gap-16">
-          <div>
+        <div>
+          <div className="grid grid-cols-6">
             {!localStorage.getItem("Username") ? (
               ""
             ) : (
-              <div className="mt-8 md:ml-24  ml-8  flex flex-row ">
-                <img src={cross} height={6} width={30}></img>
-                <div className="text-lg  font-Bungee  mt-1">Over Due</div>
-              </div>
+              <></>
+              // <div className="mt-8 md:ml-24  ml-8  flex flex-row ">
+              //   <img src={cross} height={6} width={30}></img>
+              //   <div className="text-lg  font-Bungee  mt-1">Over Due</div>
+              // </div>
             )}
             {indiviualTodos.map((EachElemet) => {
               var isCompleted = EachElemet.isCompleted;
               if (!isCompleted) {
                 return (
                   <div key={EachElemet._id}>
-                    <DisplayIndiviualTodos
-                      title={EachElemet.title}
-                      description={EachElemet.description}
-                      isCompleted={EachElemet.isCompleted}
-                      id={EachElemet._id}
-                    ></DisplayIndiviualTodos>{" "}
+                    <div>
+                      <DisplayIndiviualTodos
+                        title={EachElemet.title}
+                        description={EachElemet.description}
+                        isCompleted={EachElemet.isCompleted}
+                        id={EachElemet._id}
+                      ></DisplayIndiviualTodos>{" "}
+                    </div>
                   </div>
                 );
               } else {
@@ -125,17 +131,18 @@ export function IndiviualTodo() {
               }
             })}
           </div>
-          <div className="flex flex-col"></div>
+
           <div>
             {!localStorage.getItem("Username") ? (
               ""
             ) : (
-              <div className="mt-8 md:ml-24   flex flex-row ">
-                <img src={done} height={6} width={30}></img>
-                <div className="text-lg  font-Bungee  mt-1">Completed</div>
-              </div>
+              <></>
+              // <div className="mt-8 md:ml-24   flex flex-row ">
+              //   <img src={done} height={6} width={30}></img>
+              //   <div className="text-lg  font-Bungee  mt-1">Completed</div>
+              // </div>
             )}
-            {indiviualTodos.map((EachElemet) => {
+            {/* {indiviualTodos.map((EachElemet) => {
               var isCompleted = EachElemet.isCompleted;
               if (isCompleted) {
                 return (
@@ -151,7 +158,7 @@ export function IndiviualTodo() {
               } else {
                 return;
               }
-            })}
+            })} */}
           </div>
         </div>
       </div>
@@ -228,7 +235,7 @@ function DisplayIndiviualTodos(props) {
   }
 
   return (
-    <div className=" flex flex-col  ml-8 md:ml-28 border-2 p-3 m-6 rounded-xl border-red-600  hover:border-red-300">
+    <div className=" font-Notion text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
       <div className="">
         <div className="flex mt-1">
           <button onClick={UpdateTodo}>
@@ -243,33 +250,33 @@ function DisplayIndiviualTodos(props) {
   );
 }
 
-function DisplayIndiviualTodosDone(props) {
-  const isCompleted = props.isCompleted;
-  const id = props.id;
+// function DisplayIndiviualTodosDone(props) {
+//   const isCompleted = props.isCompleted;
+//   const id = props.id;
 
-  const mutation = useMutation((updatedPost) =>
-    axios.put(`${BACKENDSERVER}/Indiviualtodos/NotCompleted`, updatedPost)
-  );
+//   const mutation = useMutation((updatedPost) =>
+//     axios.put(`${BACKENDSERVER}/Indiviualtodos/NotCompleted`, updatedPost)
+//   );
 
-  function UpdateTodo() {
-    mutation.mutate({ id });
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
-  }
+//   function UpdateTodo() {
+//     mutation.mutate({ id });
+//     setTimeout(() => {
+//       window.location.reload();
+//     }, 500);
+//   }
 
-  return (
-    <div className=" flex flex-col md:ml-28 border-2  m-6 p-3 rounded-xl border-green-600  hover:border-green-300">
-      <div>
-        <div className="flex mt-1">
-          <button onClick={UpdateTodo}>
-            <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
-          </button>
-          <h1 className="text-xl   font-bold  ml-6 ">{props.title}</h1>
-        </div>
+//   return (
+//     <div className=" flex flex-col md:ml-28 border-2  m-6 p-3 rounded-xl border-green-600  hover:border-green-300">
+//       <div>
+//         <div className="flex mt-1">
+//           <button onClick={UpdateTodo}>
+//             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
+//           </button>
+//           <h1 className="text-xl   font-bold  ml-6 ">{props.title}</h1>
+//         </div>
 
-        <h3 className="text-xs  font-extralight ml-10">{props.description}</h3>
-      </div>
-    </div>
-  );
-}
+//         <h3 className="text-xs  font-extralight ml-10">{props.description}</h3>
+//       </div>
+//     </div>
+//   );
+// }

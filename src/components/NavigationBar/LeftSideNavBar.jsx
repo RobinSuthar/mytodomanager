@@ -3,7 +3,7 @@ import { Selection } from "./Selection";
 
 export function LeftSideNavBar() {
   return (
-    <div className="mt-1 p-2 text-gray-400 ">
+    <div className=" p-2 text-gray-400 h-screen bg-Robin3 ">
       <div className=" font-Notion flex  md:just ify-start md:text-left m-2 gap-2  md:mt-5">
         <img
           className="h-6 w-6  rounded-md "
