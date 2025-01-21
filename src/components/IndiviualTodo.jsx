@@ -76,9 +76,11 @@ export function IndiviualTodo() {
         {!localStorage.getItem("Username") ? (
           <></>
         ) : (
-          <div className="md:ml-56 flex justify-center">
-            <div className="font-bold  mt-12 text-3xl text-gray-100">
-              Welcome, {localStorage.getItem("Username")}
+          <div className="flex  flex-col justify-center">
+            <div className="flex justify-center">
+              <div className="font-bold  mt-12 text-3xl text-gray-100">
+                Welcome, {localStorage.getItem("Username")}
+              </div>
             </div>
             <Popup
               trigger={
@@ -100,8 +102,8 @@ export function IndiviualTodo() {
           </div>
         )}
 
-        <div>
-          <div className="grid grid-cols-6">
+        <div className="p-14">
+          <div className=" grid grid-cols-3 gap-5">
             {!localStorage.getItem("Username") ? (
               ""
             ) : (
@@ -235,7 +237,7 @@ function DisplayIndiviualTodos(props) {
   }
 
   return (
-    <div className=" font-Notion text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
+    <div className=" font-Notion h-36 text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
       <div className="">
         <div className="flex mt-1">
           <button onClick={UpdateTodo}>

@@ -23,7 +23,7 @@ export function Organization() {
     mutation.mutate({ companyName, companyPin });
   }
   return (
-    <div className="md:flex gap-28 text-white bg-black ">
+    <div className="md:flex gap-28 font-Notion text-white bg-Robin4 ">
       <div className=" md:grid md:grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
@@ -51,7 +51,7 @@ export function Organization() {
             </div>
             <div className="mt-4">
               <button
-                className="font-Robin text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
+                className="font-Notion text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
                 onClick={HandleCompanyinfo}
               >
                 Submit{" "}
@@ -63,8 +63,8 @@ export function Organization() {
         )}
         <div>
           <div className="">
-            <div className=" mt-5 text-center md:ml-56">
-              <h1 className="text-4xl font-Bungee ">
+            <div className=" mt-5 flex justify-center text-center md:ml-56">
+              <h1 className="text-4xl font-Notion ">
                 {localStorage.getItem("Companyname")}
               </h1>
             </div>

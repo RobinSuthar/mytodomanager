@@ -25,29 +25,30 @@ export function DisplayAllCompanyTodo() {
         {!localStorage.getItem("Companyname") ? (
           <></>
         ) : (
-          <div className="flex flex-row   md:ml-4 ml-4">
-            <div className="mt-8  flex flex-row">
-              <div>
-                <img src={tickiamge} height={1} width={26}></img>
-              </div>
-              <div className="text-sm font-medium mt-1">Over Due</div>
-            </div>
-            <div className="mt-8  flex flex-row ml-24 md:ml-40">
-              <div>
-                <img src={done} height={1} width={26}></img>
-              </div>
-              <div className="text-sm font-medium mt-1">Completed</div>
-            </div>
-          </div>
+          <></>
+          // <div className="flex flex-row   md:ml-4 ml-4">
+          //   <div className="mt-8  flex flex-row">
+          //     <div>
+          //       <img src={tickiamge} height={1} width={26}></img>
+          //     </div>
+          //     <div className="text-sm font-medium mt-1">Over Due</div>
+          // //   </div>
+          //   {/* <div className="mt-8  flex flex-row ml-24 md:ml-40">
+          //     <div>
+          //       <img src={done} height={1} width={26}></img>
+          //     </div>
+          //     <div className="text-sm font-medium mt-1">Completed</div>
+          //   </div> */}
+          // </div>
         )}
       </div>
-      <div className="flex  md:gap-16">
-        <div>
+      <div className="ml-16  md:gap-16">
+        <div className="grid grid-cols-5 gap-5">
           {CompanyTodos.map((EachElemet) => {
             var isCompleted = EachElemet.isCompleted;
             if (!isCompleted) {
               return (
-                <div key={EachElemet._id}>
+                <div className="" key={EachElemet._id}>
                   <DisplayTodos
                     id={EachElemet._id}
                     author={EachElemet.author}
@@ -65,7 +66,7 @@ export function DisplayAllCompanyTodo() {
           })}
         </div>
 
-        <div>
+        {/* <div>
           {CompanyTodos.map((EachElemet) => {
             var isCompleted = EachElemet.isCompleted;
             if (isCompleted) {
@@ -86,7 +87,7 @@ export function DisplayAllCompanyTodo() {
               return;
             }
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -107,8 +108,8 @@ function DisplayTodos(props) {
   }
 
   return (
-    <div>
-      <div className="gap-6 m-6    text-left border-2 p-3 rounded-xl border-red-600  hover:border-red-300 ">
+    <div className="font-Notion text-gray-300 bg-Robin2 shadow-2xl  flex border-2 p-3 border-Robin2 rounded-xl">
+      <div className=" ">
         <div className="flex mt-2">
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
