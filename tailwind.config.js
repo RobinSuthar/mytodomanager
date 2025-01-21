@@ -9,8 +9,8 @@ export default {
         Notion: ["Jost", "serif"],
       },
       colors: {
-        Robin: "#11161c;",
-        Robin2: "#1b2129",
+        Robin: "#191919;",
+        Robin2: "#212020",
       },
     },
   },
