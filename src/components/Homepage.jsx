@@ -7,6 +7,8 @@ import tickiamge from "./Images/wrong.png";
 import done from "./Images/tick.png";
 import NotDone from "./Images/circleWithoutHover.png";
 import { PushSpinner, WhisperSpinner } from "react-spinners-kit";
+import Banner from "./Images/Banner.png";
+
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 
 export function HomePage() {
@@ -57,7 +59,7 @@ export function HomePage() {
       )}
       {!loading && (
         <div className="md:grid md:grid-cols-[14rem,8fr] text-white  ">
-          <div className="bg-Robin2">
+          <div className="bg-Robin2 border-r-2 border-gray-700 ">
             <div id="LeftSideDiv w-48">
               <LeftSideNavBar></LeftSideNavBar>
               <nav className="p m-5 w-11"></nav>
@@ -67,7 +69,7 @@ export function HomePage() {
             <div id="RightSideDiv " className=" ">
               <div className="flex-col justify-center md:ml-26 ml-2 ">
                 <Main></Main>
-
+                <img src={Banner} alt="" />
                 <div className="flex flex-row md:gap-20 gap-12 md:ml-24">
                   <div id="One" className="">
                     <div className="mt-8  flex flex-row ">
