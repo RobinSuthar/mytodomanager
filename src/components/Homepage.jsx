@@ -49,22 +49,22 @@ export function HomePage() {
   );
 
   return (
-    <div>
+    <div className="bg-Robin">
       {loading && (
         <div className="flex justify-center mt-80 md:mt-60">
           <WhisperSpinner></WhisperSpinner>
         </div>
       )}
       {!loading && (
-        <div className="md:grid md:grid-cols-[14rem,8fr] text-white  bg-black ">
-          <div>
+        <div className="md:grid md:grid-cols-[14rem,8fr] text-white  ">
+          <div className="bg-Robin2">
             <div id="LeftSideDiv w-48">
               <LeftSideNavBar></LeftSideNavBar>
               <nav className="p m-5 w-11"></nav>
             </div>
           </div>
           <div>
-            <div id="RightSideDiv " className=" bg-black">
+            <div id="RightSideDiv " className=" ">
               <div className="flex-col justify-center md:ml-26 ml-2 ">
                 <Main></Main>
 
@@ -72,7 +72,7 @@ export function HomePage() {
                   <div id="One" className="">
                     <div className="mt-8  flex flex-row ">
                       <img src={tickiamge} height={6} width={30}></img>
-                      <div className="text-lg  font-Bungee  mt-1">Over Due</div>
+                      <div className="text-lg  font-Notion  mt-1">Over Due</div>
                     </div>
                     {globaltodos.map((EachElemet) => {
                       var isCompleted = EachElemet.isCompleted;
@@ -101,7 +101,7 @@ export function HomePage() {
                   >
                     <div className="mt-8  flex flex-row ">
                       <img src={done} height={15} width={30}></img>
-                      <div className="text-lg font-Bungee font-medium mt-1">
+                      <div className="text-lg font-Notion font-medium mt-1">
                         Completed
                       </div>
                     </div>
@@ -151,7 +151,7 @@ function DisplayGlobalTodos(props) {
     }, 100);
   }
   return (
-    <div className=" font-Robin flex border-2 p-3 rounded-xl border-red-600  hover:border-red-300">
+    <div className="font-Notion flex border-2 p-3 rounded-xl border-red-600  hover:border-red-300">
       <div>
         <div className="flex">
           <button onClick={UpdateTodo}>
@@ -181,7 +181,7 @@ function DisplayGlobalTodosDone(props) {
     }, 100);
   }
   return (
-    <div className=" font-Robin flex mb-4 border-2 p-3 rounded-xl border-green-600  hover:border-green-300">
+    <div className=" font-Notion flex mb-4 border-2 p-3 rounded-xl border-green-600  hover:border-green-300">
       <div>
         <div className="flex  ">
           <button onClick={UpdateTodo}>

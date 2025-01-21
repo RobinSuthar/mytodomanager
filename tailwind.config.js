@@ -6,6 +6,11 @@ export default {
       fontFamily: {
         Bungee: ["Bungee Shade", "serif"],
         Robin: ["Noto Sans", "serif"],
+        Notion: ["Jost", "serif"],
+      },
+      colors: {
+        Robin: "#11161c;",
+        Robin2: "#1b2129",
       },
     },
   },

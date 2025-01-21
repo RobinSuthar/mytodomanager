@@ -21,7 +21,7 @@ export function DisplayAllCompanyTodo() {
   }
   return (
     <div>
-      <div className="flex flex-row  font-Bungee  ">
+      <div className="flex flex-row  font-Notion  ">
         {!localStorage.getItem("Companyname") ? (
           <></>
         ) : (

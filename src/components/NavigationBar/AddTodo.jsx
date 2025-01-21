@@ -15,7 +15,7 @@ export function AddTodo() {
         trigger={
           <button className="flex p-2  hover:border-2 hover:border-green-400 rounded-2xl text-green-400 ">
             <img height={16} width={30} src={x} alt="" />{" "}
-            <div className="font-Robin  font-semibold ml-2 mt-1">Add Todo</div>
+            <div className="font-Notion  font-semibold ml-2 mt-1">Add Todo</div>
           </button>
         }
         position="right center"
@@ -48,7 +48,7 @@ function AddTodos(props) {
     }, 500);
   }
   return (
-    <div className="font-Robin ">
+    <div className="font-Notion ">
       <input
         className="p-1"
         id="Title"
@@ -66,7 +66,7 @@ function AddTodos(props) {
         placeholder="Description"
       ></input>
       <button
-        className="font-Robin text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
+        className="font-Notion text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
         onClick={submitData}
       >
         {" "}

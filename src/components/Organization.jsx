@@ -9,7 +9,6 @@ const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 import x from "./Images/icons8-add-48.png";
 
 export function Organization() {
-  document.body.style.backgroundColor = "black";
   ///All Logic to Add A company is here
   const [companyName, setCompanyName] = useState("");
   const [companyPin, setCompanyPin] = useState("");
