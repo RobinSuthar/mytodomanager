@@ -37,7 +37,7 @@ export function IndiviualTodo() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row font-Robin">
+    <div className="flex flex-col md:flex-row  text-white font-Robin bg-black">
       <div className="md:w-48 md:grid md:grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>

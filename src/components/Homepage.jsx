@@ -56,7 +56,7 @@ export function HomePage() {
         </div>
       )}
       {!loading && (
-        <div className="md:grid md:grid-cols-[14rem,8fr] ">
+        <div className="md:grid md:grid-cols-[14rem,8fr] text-white  bg-black ">
           <div>
             <div id="LeftSideDiv w-48">
               <LeftSideNavBar></LeftSideNavBar>
@@ -64,7 +64,7 @@ export function HomePage() {
             </div>
           </div>
           <div>
-            <div id="RightSideDiv  ">
+            <div id="RightSideDiv " className=" bg-black">
               <div className="flex-col justify-center md:ml-26 ml-2 ">
                 <Main></Main>
 

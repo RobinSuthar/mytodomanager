@@ -3,7 +3,7 @@ import "./App.css";
 import { HomePage } from "./components/Homepage";
 function App() {
   return (
-    <div>
+    <div className="bg-black">
       <HomePage></HomePage>
     </div>
   );

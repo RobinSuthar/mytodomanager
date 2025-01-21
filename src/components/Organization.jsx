@@ -9,6 +9,7 @@ const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 import x from "./Images/icons8-add-48.png";
 
 export function Organization() {
+  document.body.style.backgroundColor = "black";
   ///All Logic to Add A company is here
   const [companyName, setCompanyName] = useState("");
   const [companyPin, setCompanyPin] = useState("");
@@ -23,7 +24,7 @@ export function Organization() {
     mutation.mutate({ companyName, companyPin });
   }
   return (
-    <div className="md:flex gap-28 ">
+    <div className="md:flex gap-28 text-white bg-black ">
       <div className=" md:grid md:grid-cols-[14rem,8fr]">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
