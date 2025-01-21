@@ -5,10 +5,11 @@ import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import { Main } from "./Hero/Main";
 import tickiamge from "./Images/wrong.png";
 import done from "./Images/tick.png";
-import NotDone from "./Images/circleWithoutHover.png";
+import NotDone from "./Images/wrong.png";
 import { PushSpinner, WhisperSpinner } from "react-spinners-kit";
 import Banner from "./Images/Banner12.png";
 import newTick from "./Images/newtick.png";
+import { AddTodo } from "./NavigationBar/AddTodo";
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 
 export function HomePage() {
@@ -51,14 +52,14 @@ export function HomePage() {
   );
 
   return (
-    <div className="bg-Robin">
+    <div className="h-screen bg-Robin">
       {loading && (
         <div className="flex justify-center mt-80 md:mt-60">
           <WhisperSpinner></WhisperSpinner>
         </div>
       )}
       {!loading && (
-        <div className="md:grid md:grid-cols-[14rem,8fr] text-white  ">
+        <div className="md:grid  h-screen bg-black md:grid-cols-[14rem,8fr] text-white  ">
           <div className="bg-Robin2 border-r-2 border-gray-700 ">
             <div id="LeftSideDiv w-48">
               <LeftSideNavBar></LeftSideNavBar>
@@ -68,9 +69,9 @@ export function HomePage() {
           <div>
             <div
               id="RightSideDiv "
-              className="font-Notion text-gray-300 gap-2 "
+              className="font-Notion h-screen bg-black text-gray-300 gap-2 "
             >
-              <div className="flex-col justify-center md:ml-26  ">
+              <div className="flex-col h-screen bg-black justify-center md:ml-26  ">
                 <Main></Main>
                 <div className="max-w-full border-b-2 border-Robin2">
                   <img className="h-36 w-full " src={Banner} alt="" />
@@ -86,14 +87,11 @@ export function HomePage() {
                     easy tracking. Stay on top of deadlines, focus on what needs
                     to be done, and celebrate completed tasks—all in one place!
                   </div>
-                  <div className="border-b-2 border-gray-700 mt-6 mr-20"></div>
+                  <AddTodo></AddTodo>
+                  <div className="border-b-2 border-gray-700 mt-2 mr-20"></div>
                 </div>
                 <div className="flex flex-row md:gap-20 gap-12 md:ml-24">
-                  <div id="One" className="">
-                    <div className="mt-8  flex flex-row ">
-                      <img src={tickiamge} height={6} width={30}></img>
-                      <div className="text-lg  font-Notion  mt-1">Over Due</div>
-                    </div>
+                  <div id="One" className="grid   lg:grid-cols-6   lg:gap-6">
                     {globaltodos.map((EachElemet) => {
                       var isCompleted = EachElemet.isCompleted;
                       if (!isCompleted) {
@@ -114,17 +112,11 @@ export function HomePage() {
                       }
                     })}
                   </div>
-                  <div
+                  {/* <div
                     id="Two"
-                    className="md:ml-40 
+                    className="md:ml-40 grid  grid-cols-2  gap-6
                    "
                   >
-                    <div className="mt-8  flex flex-row ">
-                      <img src={done} height={15} width={30}></img>
-                      <div className="text-lg font-Notion font-medium mt-1">
-                        Completed
-                      </div>
-                    </div>
                     {globaltodos.map((EachElemet) => {
                       var isCompleted = EachElemet.isCompleted;
                       const time = EachElemet.createdAt;
@@ -146,7 +138,7 @@ export function HomePage() {
                         return;
                       }
                     })}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -171,8 +163,8 @@ function DisplayGlobalTodos(props) {
     }, 100);
   }
   return (
-    <div className="font-Notion flex border-2 p-3 rounded-xl border-red-600  hover:border-red-300">
-      <div>
+    <div className="font-Notion text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
+      <div className="">
         <div className="flex">
           <button onClick={UpdateTodo}>
             <img src={isCompleted ? done : NotDone} height={4} width={16}></img>
@@ -201,7 +193,7 @@ function DisplayGlobalTodosDone(props) {
     }, 100);
   }
   return (
-    <div className=" font-Notion flex mb-4 border-2 p-3 rounded-xl border-green-600  hover:border-green-300">
+    <div className=" bg-Robin2 font-Notion flex mb-4 border-2 p-3 rounded-xl border-green-600  hover:border-green-300">
       <div>
         <div className="flex  ">
           <button onClick={UpdateTodo}>

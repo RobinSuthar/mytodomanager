@@ -1,5 +1,5 @@
 import { useState } from "react";
-import x from "../Images/icons8-add-48.png";
+import x from "../Images/dwnarroa.png";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useMutation } from "react-query";
@@ -10,12 +10,15 @@ export function AddTodo() {
   const [counter, setCounter] = useState(0);
 
   return (
-    <div className="flex md:justify-center justify-center mt-7 md:mr-14">
+    <div className="flex font-Notion  mt-1 ">
       <Popup
         trigger={
-          <button className="flex p-2  hover:border-2 hover:border-green-400 rounded-2xl text-green-400 ">
-            <img height={16} width={30} src={x} alt="" />{" "}
-            <div className="font-Notion  font-semibold ml-2 mt-1">Add Todo</div>
+          <button className="flex p-2 bg-blue-600 h-9 w-30 text-gray-300 rounded-lg  ">
+            <div className="font-Notion text-sm  font-bold ml-2 ">Add Todo</div>
+            <div className="flex flex-col">
+              <div className="border-2 border-gray-400 h-6 ml-2"></div>
+            </div>
+            <img className="h-6 w-6 " src={x} alt="" />{" "}
           </button>
         }
         position="right center"
@@ -66,7 +69,7 @@ function AddTodos(props) {
         placeholder="Description"
       ></input>
       <button
-        className="font-Notion text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
+        className="font-Notion text-lg hover:border-2  p-1 rounded-2xl "
         onClick={submitData}
       >
         {" "}
