@@ -69,7 +69,7 @@ function AddTodos(props) {
         placeholder="Description"
       ></input>
       <button
-        className="font-Notion text-lg hover:border-2  p-1 rounded-2xl "
+        className="font-Notion text-base text-gray-600 hover:bg-blue-500 hover:text-white  hover:rounded-lg p-1 rounded-2xl "
         onClick={submitData}
       >
         {" "}

@@ -80,12 +80,15 @@ export function HomePage() {
                   <div className="font-Notion text-3xl font-extrabold">
                     <div>GLOBAL TODO</div>
                   </div>
-                  <div className="mr-48">
+                  <div className="mr-48 mb-2">
                     Stay organized with your to-do website! The Global To-Do
-                    Page lets everyone view tasks created today, while tasks are
-                    neatly categorized into overdue, pending, and completed for
-                    easy tracking. Stay on top of deadlines, focus on what needs
-                    to be done, and celebrate completed tasks—all in one place!
+                    Page allows everyone to view and interact with tasks created
+                    today, fostering collaboration and accountability. Tasks are
+                    automatically categorized as uncompleted . Marking a task as
+                    done is as simple as clicking the "X," instantly moving it
+                    to the Vanish section. focus on what's important, and
+                    celebrate achievements—all while staying on top of their
+                    daily responsibilities!
                   </div>
                   <AddTodo></AddTodo>
                   <div className="border-b-2 border-gray-700 mt-2 mr-20"></div>

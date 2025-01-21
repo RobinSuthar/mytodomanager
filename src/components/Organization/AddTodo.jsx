@@ -83,7 +83,7 @@ export function AddTodo() {
         }}
       ></input>
       <button
-        className="font-Robin text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
+        className="font-Robin text-xl hover:border-2 "
         onClick={handleClick}
       >
         Submit
