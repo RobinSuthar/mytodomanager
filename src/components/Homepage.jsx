@@ -7,7 +7,7 @@ import tickiamge from "./Images/wrong.png";
 import done from "./Images/tick.png";
 import NotDone from "./Images/circleWithoutHover.png";
 import { PushSpinner, WhisperSpinner } from "react-spinners-kit";
-import Banner from "./Images/Banner11.png";
+import Banner from "./Images/Banner12.png";
 import newTick from "./Images/newtick.png";
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 
@@ -66,11 +66,27 @@ export function HomePage() {
             </div>
           </div>
           <div>
-            <div id="RightSideDiv " className=" ">
+            <div
+              id="RightSideDiv "
+              className="font-Notion text-gray-300 gap-2 "
+            >
               <div className="flex-col justify-center md:ml-26  ">
                 <Main></Main>
                 <div className="max-w-full border-b-2 border-Robin2">
                   <img className="h-36 w-full " src={Banner} alt="" />
+                </div>
+                <div className="flex flex-col  justify-center mt-10 ml-24">
+                  <div className="font-Notion text-3xl font-extrabold">
+                    <div>GLOBAL TODO</div>
+                  </div>
+                  <div className="mr-48">
+                    Stay organized with your to-do website! The Global To-Do
+                    Page lets everyone view tasks created today, while tasks are
+                    neatly categorized into overdue, pending, and completed for
+                    easy tracking. Stay on top of deadlines, focus on what needs
+                    to be done, and celebrate completed tasks—all in one place!
+                  </div>
+                  <div className="border-b-2 border-gray-700 mt-6 mr-20"></div>
                 </div>
                 <div className="flex flex-row md:gap-20 gap-12 md:ml-24">
                   <div id="One" className="">
