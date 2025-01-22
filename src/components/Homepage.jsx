@@ -182,42 +182,42 @@ function DisplayGlobalTodos(props) {
   );
 }
 
-function DisplayGlobalTodosDone(props) {
-  const isCompleted = props.isCompleted;
-  const id = props.id;
+// function DisplayGlobalTodosDone(props) {
+//   const isCompleted = props.isCompleted;
+//   const id = props.id;
 
-  const mutation = useMutation((updatedPost) =>
-    axios.put(`${BACKENDSERVER}/Indiviualtodos/NotCompleted`, updatedPost)
-  );
+//   const mutation = useMutation((updatedPost) =>
+//     axios.put(`${BACKENDSERVER}/Indiviualtodos/NotCompleted`, updatedPost)
+//   );
 
-  function UpdateTodo() {
-    mutation.mutate({ id });
-    setTimeout(() => {
-      window.location.reload();
-    }, 100);
-  }
-  return (
-    <div className=" bg-Robin2 font-Notion flex mb-4 border-2 p-3 rounded-xl border-green-600  hover:border-green-300">
-      <div>
-        <div className="flex  ">
-          <button onClick={UpdateTodo}>
-            <img
-              src={!isCompleted ? NotDone : done}
-              height={4}
-              width={25}
-            ></img>
-          </button>
-          <div className="flex flex-col">
-            <h1 className="text-xl ml-6 font-normal line-through ">
-              {props.title}
-            </h1>
+//   function UpdateTodo() {
+//     mutation.mutate({ id });
+//     setTimeout(() => {
+//       window.location.reload();
+//     }, 100);
+//   }
+//   return (
+//     <div className=" bg-Robin2 font-Notion flex mb-4 border-2 p-3 rounded-xl border-green-600  hover:border-green-300">
+//       <div>
+//         <div className="flex  ">
+//           <button onClick={UpdateTodo}>
+//             <img
+//               src={!isCompleted ? NotDone : done}
+//               height={4}
+//               width={25}
+//             ></img>
+//           </button>
+//           <div className="flex flex-col">
+//             <h1 className="text-xl ml-6 font-normal line-through ">
+//               {props.title}
+//             </h1>
 
-            <h3 className="text-xs ml-6 font-light line-through">
-              {props.description}
-            </h3>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+//             <h3 className="text-xs ml-6 font-light line-through">
+//               {props.description}
+//             </h3>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }

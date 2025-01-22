@@ -62,39 +62,41 @@ export function Organization() {
           ""
         )}
         <div>
-          <div className="">
-            <div className=" mt-5 flex justify-center text-center md:ml-56">
-              <h1 className="text-4xl font-Notion ">
-                {localStorage.getItem("Companyname")}
-              </h1>
+          <div>
+            <div className="w-screen">
+              <div className=" mt-5 flex justify-center text-center md:ml-56">
+                <h1 className="text-4xl font-Notion ">
+                  {localStorage.getItem("Companyname")}
+                </h1>
+              </div>
             </div>
+            {!localStorage.getItem("Companyname") ? (
+              <></>
+            ) : (
+              <div>
+                <Popup
+                  trigger={
+                    <div className="mt-7 flex justify-center md:ml-48">
+                      <div>
+                        <button className="">
+                          <img height={24} width={26} src={x} alt="" />{" "}
+                        </button>
+                      </div>
+
+                      <div className="text-sm    font-semibold text-green-400  mt-1">
+                        Add Organizational Todo
+                      </div>
+                    </div>
+                  }
+                  position="md:left center right center"
+                >
+                  <AddTodo></AddTodo>
+                </Popup>
+              </div>
+            )}
+
+            <DisplayAllCompanyTodo></DisplayAllCompanyTodo>
           </div>
-          {!localStorage.getItem("Companyname") ? (
-            <></>
-          ) : (
-            <div>
-              <Popup
-                trigger={
-                  <div className="mt-7 flex justify-center md:ml-48">
-                    <div>
-                      <button className="">
-                        <img height={24} width={26} src={x} alt="" />{" "}
-                      </button>
-                    </div>
-
-                    <div className="text-sm    font-semibold text-green-400  mt-1">
-                      Add Organizational Todo
-                    </div>
-                  </div>
-                }
-                position="md:left center right center"
-              >
-                <AddTodo></AddTodo>
-              </Popup>
-            </div>
-          )}
-
-          <DisplayAllCompanyTodo></DisplayAllCompanyTodo>
         </div>
       </div>
     </div>

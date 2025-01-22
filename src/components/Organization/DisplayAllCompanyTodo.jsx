@@ -43,7 +43,7 @@ export function DisplayAllCompanyTodo() {
         )}
       </div>
       <div className="ml-16  md:gap-16">
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-6">
           {CompanyTodos.map((EachElemet) => {
             var isCompleted = EachElemet.isCompleted;
             if (!isCompleted) {
@@ -108,10 +108,10 @@ function DisplayTodos(props) {
   }
 
   return (
-    <div className="font-Notion h-36 text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
+    <div className="font-Notion text-gray-300 bg-Robin2 shadow-2xl   border-2 border-Robin2 rounded-xl">
       <div>
-        <div className="bg-Robin3 max-w-md">
-          <div className="flex justify-center  ">
+        <div className="bg-Robin3 ">
+          <div className="flex w-12  ">
             <h1 className="text-xl   font-bold ml-6">{props.title}</h1>
           </div>
         </div>

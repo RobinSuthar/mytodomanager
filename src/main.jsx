@@ -18,7 +18,7 @@ createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
     <Router  >
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route c path="/" element={<HomePage />} />
         <Route path="/personal" element={<IndiviualTodo />} />
         <Route path="/organization" element={<Organization />} />
         <Route path="*" element={<Navigate to="/" />} />
