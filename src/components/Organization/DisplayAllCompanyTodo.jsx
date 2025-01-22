@@ -2,8 +2,10 @@ import axios from "axios";
 import { useState } from "react";
 import done from "../Images/tick.png";
 import NotDone from "../Images/circleWithoutHover.png";
-import tickiamge from "../Images/wrong.png";
+import tickiamge from "../Images/newtick.png";
 import { useMutation } from "react-query";
+import randompic from "../Images/Random.png";
+
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 
 export function DisplayAllCompanyTodo() {
@@ -112,22 +114,27 @@ function DisplayTodos(props) {
       <div className=" rounded-3xl text-l">
         <div className="bg-Robin3 rounded-xl flex justify-center ">
           <div className="flex flex-col justify-center   h-14    ">
-            <h1 className="text-2xl   font-medium ">{props.title}</h1>
-            <h3 className="text-xs text-center  ">{props.author}</h3>
+            <h1 className="text-2xl text-center   font-medium ">
+              {props.title}
+            </h1>
+            <h3 className="text-xs text-center   ">{props.author}</h3>
           </div>
         </div>
         <div>
-          <div className=" ">
-            <h3 className="text-xs ml-6"> {props.description}</h3>
+          <div className=" mt-4 ">
+            <h3 className="text-lg ml-6"> {props.description}</h3>
 
-            <h3 className="text-xs ml-6">{props.importance}</h3>
-            <h3 className="text-xs ml-6">{props.tag}</h3>
-            <button onClick={UpdateTodo}>
-              <img
-                src={isCompleted ? done : NotDone}
-                height={8}
-                width={16}
-              ></img>
+            <h3 className="text-lg ml-6">{props.importance}</h3>
+            <h3 className="text-lg  ml-6">{props.tag}</h3>
+            <button
+              className="flex p-2   mt-4  ml-5 bg-Robin3 h-9 w-30 hover:bg-green-400 text-gray-300 rounded-lg "
+              onClick={UpdateTodo}
+            >
+              <div className="font-Notion text-sm  font-bold ml-2 ">Done</div>
+              <div className="flex flex-col">
+                <div className="border-2 border-gray-400 h-6 ml-2"></div>
+              </div>
+              <img className="h-6 w-6 " src={tickiamge} alt="" />{" "}
             </button>
           </div>
         </div>
