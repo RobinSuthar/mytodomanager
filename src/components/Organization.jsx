@@ -23,7 +23,7 @@ export function Organization() {
     mutation.mutate({ companyName, companyPin });
   }
   return (
-    <div className="md:flex gap-28 font-Notion text-white bg-Robin4 ">
+    <div className="md:flex gap-8 font-Notion text-white bg-Robin4 ">
       <div className=" ">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
@@ -64,7 +64,11 @@ export function Organization() {
         <div>
           <div>
             <div className="">
-              <div className=" mt-5 flex justify-center text-center md:ml-56">
+              {" "}
+              <a href="https://github.com/RobinSuthar">Robin Suthar</a>{" "}
+            </div>
+            <div className="ml-12 text-left">
+              <div className=" mt-5 flex  text-left mb-10 ">
                 <h1 className="text-4xl font-Notion ">
                   {localStorage.getItem("Companyname")}
                 </h1>
@@ -73,7 +77,20 @@ export function Organization() {
             {!localStorage.getItem("Companyname") ? (
               <></>
             ) : (
-              <div>
+              <div className="ml-12">
+                <div className="mr-12">
+                  <div>
+                    Welcome to the Company Section of your to-do website! Once
+                    logged in with your company username and PIN, you’ll have
+                    access to a personalized dashboard of tasks. Each task
+                    displays key details, including the author who created it, a
+                    descriptive title, and a brief explanation to understand its
+                    purpose. Tasks are also assigned an importance level ranging
+                    from 1 (low) to 5 (critical) to help you prioritize
+                    effectively. Additionally, the tag indicates the person
+                    responsible for completing the task.
+                  </div>
+                </div>
                 <Popup
                   trigger={
                     <div className="mt-7 flex justify-center md:ml-48">
@@ -82,7 +99,7 @@ export function Organization() {
                           <img height={24} width={26} src={x} alt="" />{" "}
                         </button>
                       </div>
-
+                      <div></div>
                       <div className="text-sm    font-semibold text-green-400  mt-1">
                         Add Organizational Todo
                       </div>
