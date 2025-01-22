@@ -23,8 +23,8 @@ export function Organization() {
     mutation.mutate({ companyName, companyPin });
   }
   return (
-    <div className="md:flex gap-28 w-screen font-Notion text-white bg-Robin4 ">
-      <div className="w-56 ">
+    <div className="md:flex gap-28 font-Notion text-white bg-Robin4 ">
+      <div className=" ">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
 
@@ -63,7 +63,7 @@ export function Organization() {
         )}
         <div>
           <div>
-            <div className="w-screen">
+            <div className="">
               <div className=" mt-5 flex justify-center text-center md:ml-56">
                 <h1 className="text-4xl font-Notion ">
                   {localStorage.getItem("Companyname")}

@@ -42,8 +42,8 @@ export function DisplayAllCompanyTodo() {
           // </div>
         )}
       </div>
-      <div className="ml-16  md:gap-16">
-        <div className="grid grid-cols-3 gap-6">
+      <div className="ml-4">
+        <div className="grid grid-cols-3 gap-8">
           {CompanyTodos.map((EachElemet) => {
             var isCompleted = EachElemet.isCompleted;
             if (!isCompleted) {
@@ -108,22 +108,20 @@ function DisplayTodos(props) {
   }
 
   return (
-    <div className="font-Notion text-gray-300 bg-Robin2 shadow-2xl   border-2 border-Robin2 rounded-xl">
-      <div>
-        <div className="bg-Robin3 ">
-          <div className="flex w-12  ">
-            <h1 className="text-xl   font-bold ml-6">{props.title}</h1>
+    <div className="font-Notion w-80 border-2  text-gray-300 bg-Robin2 shadow-2xl h-56   border-Robin2 rounded-3xl">
+      <div className=" rounded-3xl text-l">
+        <div className="bg-Robin3 rounded-xl flex justify-center ">
+          <div className="flex flex-col justify-center   h-14    ">
+            <h1 className="text-2xl   font-medium ">{props.title}</h1>
+            <h3 className="text-xs text-center  ">{props.author}</h3>
           </div>
         </div>
         <div>
           <div className=" ">
-            <h3 className="text-xs ml-10">Description: {props.description}</h3>
+            <h3 className="text-xs ml-6"> {props.description}</h3>
 
-            <h3 className="text-xs font-semibold ml-10">
-              Author: {props.author}
-            </h3>
-            <h3 className="text-xs ml-10">Priorty{props.importance}</h3>
-            <h3 className="text-xs ml-10">{props.tag}</h3>
+            <h3 className="text-xs ml-6">{props.importance}</h3>
+            <h3 className="text-xs ml-6">{props.tag}</h3>
             <button onClick={UpdateTodo}>
               <img
                 src={isCompleted ? done : NotDone}
