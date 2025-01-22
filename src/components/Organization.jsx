@@ -23,14 +23,14 @@ export function Organization() {
     mutation.mutate({ companyName, companyPin });
   }
   return (
-    <div className="md:flex gap-28 font-Notion text-white bg-Robin4 ">
-      <div className=" md:grid md:grid-cols-[14rem,8fr]">
+    <div className="md:flex gap-28 w-screen font-Notion text-white bg-Robin4 ">
+      <div className="w-56 ">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
 
       <div>
         {!localStorage.getItem("Companypin") ? (
-          <div className="md:mt-36 md:ml-28 mt-8 ml-20">
+          <div className="md:mt-36 md:ml-28 mt-8 ">
             <div className="flex flex-col justify-center">
               <input
                 className="md:w-80 w-60 font-Robin mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border-4 border-green-200 rounded-md transition duration-300 ease focus:outline-none focus:border-green-400 hover:border-slate-300 shadow-sm focus:shadow "

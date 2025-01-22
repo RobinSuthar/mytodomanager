@@ -43,7 +43,7 @@ export function DisplayAllCompanyTodo() {
         )}
       </div>
       <div className="ml-16  md:gap-16">
-        <div className="grid grid-cols-5 gap-5">
+        <div className="grid grid-cols-3 gap-5">
           {CompanyTodos.map((EachElemet) => {
             var isCompleted = EachElemet.isCompleted;
             if (!isCompleted) {
@@ -108,54 +108,66 @@ function DisplayTodos(props) {
   }
 
   return (
-    <div className="font-Notion text-gray-300 bg-Robin2 shadow-2xl  flex border-2 p-3 border-Robin2 rounded-xl">
-      <div className=" ">
-        <div className="flex mt-2">
-          <button onClick={UpdateTodo}>
-            <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
-          </button>
-          <h1 className="text-xl   font-bold ml-6">{props.title}</h1>
+    <div className="font-Notion h-36 text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
+      <div>
+        <div className="bg-Robin3 max-w-md">
+          <div className="flex justify-center  ">
+            <h1 className="text-xl   font-bold ml-6">{props.title}</h1>
+          </div>
         </div>
-        <h3 className="text-xs ml-10">Description: {props.description}</h3>
+        <div>
+          <div className=" ">
+            <h3 className="text-xs ml-10">Description: {props.description}</h3>
 
-        <h3 className="text-xs font-semibold ml-10">Author: {props.author}</h3>
-        <h3 className="text-xs ml-10">Priorty{props.importance}</h3>
-        <h3 className="text-xs ml-10">{props.tag}</h3>
+            <h3 className="text-xs font-semibold ml-10">
+              Author: {props.author}
+            </h3>
+            <h3 className="text-xs ml-10">Priorty{props.importance}</h3>
+            <h3 className="text-xs ml-10">{props.tag}</h3>
+            <button onClick={UpdateTodo}>
+              <img
+                src={isCompleted ? done : NotDone}
+                height={8}
+                width={16}
+              ></img>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-function DisplayTodosDone(props) {
-  const isCompleted = props.isCompleted;
-  const id = props.id;
+// function DisplayTodosDone(props) {
+//   const isCompleted = props.isCompleted;
+//   const id = props.id;
 
-  const mutation = useMutation((updatedPost) =>
-    axios.put(`${BACKENDSERVER}/Company/NotCompleted`, updatedPost)
-  );
+//   const mutation = useMutation((updatedPost) =>
+//     axios.put(`${BACKENDSERVER}/Company/NotCompleted`, updatedPost)
+//   );
 
-  function UpdateTodo() {
-    mutation.mutate({ id });
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
-  }
+//   function UpdateTodo() {
+//     mutation.mutate({ id });
+//     setTimeout(() => {
+//       window.location.reload();
+//     }, 500);
+//   }
 
-  return (
-    <div>
-      <div className="gap-6 m-6 p-3  text-left   mb-4 border-2  rounded-xl border-green-600  hover:border-green-300">
-        <div className="flex mt-2">
-          <button onClick={UpdateTodo}>
-            <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
-          </button>
-          <h1 className="text-xl   font-bold ml-6">{props.title}</h1>
-        </div>
-        <h3 className="text-xs ml-10"> Description: {props.description}</h3>
+//   return (
+//     <div>
+//       <div className="gap-6 m-6 p-3  text-left   mb-4 border-2  rounded-xl border-green-600  hover:border-green-300">
+//         <div className="flex mt-2">
+//           <button onClick={UpdateTodo}>
+//             <img src={isCompleted ? done : NotDone} height={8} width={16}></img>
+//           </button>
+//           <h1 className="text-xl   font-bold ml-6">{props.title}</h1>
+//         </div>
+//         <h3 className="text-xs ml-10"> Description: {props.description}</h3>
 
-        <h3 className="text-xs font-semibold ml-10">Author : {props.author}</h3>
-        <h3 className="text-xs ml-10">Priorty : {props.importance}</h3>
-        <h3 className="text-xs ml-10">Tag: {props.tag}</h3>
-      </div>
-    </div>
-  );
-}
+//         <h3 className="text-xs font-semibold ml-10">Author : {props.author}</h3>
+//         <h3 className="text-xs ml-10">Priorty : {props.importance}</h3>
+//         <h3 className="text-xs ml-10">Tag: {props.tag}</h3>
+//       </div>
+//     </div>
+//   );
+// }

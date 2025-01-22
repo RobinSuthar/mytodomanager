@@ -102,8 +102,8 @@ export function IndiviualTodo() {
           </div>
         )}
 
-        <div className="p-14">
-          <div className=" grid grid-cols-3 gap-5">
+        <div>
+          <div className=" grid grid-cols-6">
             {!localStorage.getItem("Username") ? (
               ""
             ) : (
@@ -237,7 +237,7 @@ function DisplayIndiviualTodos(props) {
   }
 
   return (
-    <div className=" font-Notion h-36 text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
+    <div className=" font-Notion text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
       <div className="">
         <div className="flex mt-1">
           <button onClick={UpdateTodo}>
