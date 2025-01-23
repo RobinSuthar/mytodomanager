@@ -22,7 +22,7 @@ export function DisplayAllCompanyTodo() {
     SetCompanyTodos(AllTodos.data.allTodosByCompany);
   }
   return (
-    <div className="ml-8">
+    <div className="ml-8 mt-5">
       <div className="flex flex-row  font-Notion  ">
         {!localStorage.getItem("Companyname") ? (
           <></>
@@ -45,7 +45,7 @@ export function DisplayAllCompanyTodo() {
         )}
       </div>
       <div className="ml-4">
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 gap-8">
           {CompanyTodos.map((EachElemet) => {
             var isCompleted = EachElemet.isCompleted;
             if (!isCompleted) {

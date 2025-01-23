@@ -6,7 +6,7 @@ import { DisplayAllCompanyTodo } from "./Organization/DisplayAllCompanyTodo";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import Popup from "reactjs-popup";
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
-import x from "./Images/icons8-add-48.png";
+import x from "./Images/newtick.png";
 
 export function Organization() {
   ///All Logic to Add A company is here
@@ -63,13 +63,18 @@ export function Organization() {
         )}
         <div>
           <div>
-            <div className="">
+            <div className="mt-4 ">
               {" "}
-              <a href="https://github.com/RobinSuthar">Robin Suthar</a>{" "}
+              <a
+                className="text-gray-400  hover:text-gray-300"
+                href="https://github.com/RobinSuthar"
+              >
+                Robin Suthar
+              </a>{" "}
             </div>
             <div className="ml-12 text-left">
-              <div className=" mt-5 flex  text-left mb-10 ">
-                <h1 className="text-4xl font-Notion ">
+              <div className=" mt-12 flex  text-left mb-4 ">
+                <h1 className="text-7xl font-bold font-Notion ">
                   {localStorage.getItem("Companyname")}
                 </h1>
               </div>
@@ -77,7 +82,7 @@ export function Organization() {
             {!localStorage.getItem("Companyname") ? (
               <></>
             ) : (
-              <div className="ml-12">
+              <div className="ml-12 mt-12">
                 <div className="mr-12">
                   <div>
                     Welcome to the Company Section of your to-do website! Once
@@ -93,15 +98,15 @@ export function Organization() {
                 </div>
                 <Popup
                   trigger={
-                    <div className="mt-7 flex justify-center md:ml-48">
-                      <div>
-                        <button className="">
-                          <img height={24} width={26} src={x} alt="" />{" "}
-                        </button>
+                    <div className="flex mt-2  p-2 bg-blue-600 h-9 w-32 text-gray-300 rounded-lg ">
+                      <div className="font-Notion text-sm  font-bold ml-2 ">
+                        Add Todo
                       </div>
-                      <div></div>
-                      <div className="text-sm    font-semibold text-green-400  mt-1">
-                        Add Organizational Todo
+                      <div className="flex flex-col">
+                        <div className="border-2 border-gray-400 h-6 ml-2"></div>
+                      </div>
+                      <div className="">
+                        <img className="h-5 w-6  ml-1" src={x} alt="" />{" "}
                       </div>
                     </div>
                   }
@@ -109,6 +114,7 @@ export function Organization() {
                 >
                   <AddTodo></AddTodo>
                 </Popup>
+                <div className="border-b-2 border-gray-700 mt-3 mr-20"></div>
               </div>
             )}
 
