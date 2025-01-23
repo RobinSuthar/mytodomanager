@@ -110,10 +110,6 @@ export function IndiviualTodo() {
     });
   }
 
-  async function x() {
-    return arrayEvents;
-  }
-
   function DemoApp() {
     const handleEventClick = async (eventClickInfo) => {
       const eventTitle = eventClickInfo.event.title;
@@ -165,7 +161,7 @@ export function IndiviualTodo() {
 
   return (
     <div className="flex flex-col md:flex-row  text-white font-Robin ">
-      <div className=" w-64">
+      <div className=" ">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
       <div className=" w-screen bg-Robin4">

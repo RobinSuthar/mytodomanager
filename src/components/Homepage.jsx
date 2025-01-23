@@ -11,6 +11,8 @@ import Banner from "./Images/Banner12.png";
 import Banner2 from "./Images/hcs2.png";
 import newTick from "./Images/newtick.png";
 import { AddTodo } from "./NavigationBar/AddTodo";
+
+import { Selection } from "./NavigationBar/Selection";
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 
 export function HomePage() {
@@ -53,18 +55,33 @@ export function HomePage() {
   );
 
   return (
-    <div className="h-screen bg-Robin">
+    <div className=" bg-Robin">
       {loading && (
         <div className="flex justify-center mt-80 md:mt-60">
           <WhisperSpinner></WhisperSpinner>
         </div>
       )}
       {!loading && (
-        <div className="md:grid  h-screen bg-black md:grid-cols-[14rem,8fr] text-white  ">
+        <div className="md:grid   bg-black md:grid-cols-[14rem,8fr] text-white  ">
           <div className="bg-Robin2 border-r-2 border-gray-700 ">
-            <div id="LeftSideDiv w-48">
-              <LeftSideNavBar></LeftSideNavBar>
-              <nav className="p m-5 w-11"></nav>
+            <div
+              id="LeftSideDiv
+              "
+            >
+              <div className="w-64 p-2 text-gray-400 h-screen bg-Robin3 ">
+                <div className=" font-Notion flex  md:justify-start md:text-left m-2 gap-2  md:mt-5">
+                  <img
+                    className="h-6 w-6  rounded-md "
+                    src="https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+                    alt="nature image"
+                  />
+                  {localStorage.getItem("Username")
+                    ? localStorage.getItem("Username")
+                    : "Random"}
+                </div>
+
+                <Selection></Selection>
+              </div>
             </div>
           </div>
           <div>
@@ -72,7 +89,7 @@ export function HomePage() {
               id="RightSideDiv "
               className="font-Notion h-screen bg-Robin4 text-gray-300 gap-2 "
             >
-              <div className="flex-col h-screen bg-Robin4 justify-center md:ml-26  ">
+              <div className="flex-col h-full bg-Robin4 justify-center md:ml-26  ">
                 <Main></Main>
                 <div className="max-w-full border-b-2 border-Robin2">
                   <img className="h-36 w-full " src={Banner2} alt="" />
