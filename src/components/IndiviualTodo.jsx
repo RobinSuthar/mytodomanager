@@ -9,7 +9,7 @@ import NotDone from "./Images/circleWithoutHover.png";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 
-import editor from "./Images/editor.png";
+import editor from "./Images/Editor.png";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 
@@ -77,7 +77,6 @@ export function IndiviualTodo() {
     return "bg-Robin5 text-white   "; // Tailwind styles
   };
 
-  
   function DemoApp() {
     return (
       <div>
