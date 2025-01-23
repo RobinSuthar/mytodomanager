@@ -41,14 +41,12 @@ export function IndiviualTodo() {
   }, []);
   var arrayEvents = [];
   for (let i = 0; i < indiviualTodos.length; i++) {
-    if (localStorage.getItem("Username") == indiviualTodos[i]["username"]) {
-      var time = indiviualTodos[i]["createdAt"];
-      time = time.slice(0, 9);
-      arrayEvents.push({
-        title: indiviualTodos[i]["title"],
-        start: time,
-      });
-    }
+    var time = indiviualTodos[i]["createdAt"];
+    time = time.slice(0, 9);
+    arrayEvents.push({
+      title: indiviualTodos[i]["title"],
+      start: time,
+    });
   }
 
   function SubmitData() {
@@ -75,6 +73,11 @@ export function IndiviualTodo() {
     end: "dayGridMonth,dayGridWeek,dayGridDay",
   };
 
+  const eventClassNames = (info) => {
+    return "bg-Robin5 text-white   "; // Tailwind styles
+  };
+
+  
   function DemoApp() {
     return (
       <div>
@@ -84,9 +87,18 @@ export function IndiviualTodo() {
           weekends={false}
           events={calendarEvents}
           headerToolbar={headerToolbar}
-          eventClassNames="bg-Robin5 text-white   "
+          eventClassNames={eventClassNames}
         />
       </div>
+    );
+  }
+
+  function renderEventContent(eventInfo) {
+    return (
+      <>
+        <b>{eventInfo.timeText}</b>
+        <i>{eventInfo.event.title}</i>
+      </>
     );
   }
 
