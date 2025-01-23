@@ -15,53 +15,14 @@ import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 
 const events = [{ title: "Meeting", start: new Date() }];
 
-const calendarEvents = [
-  { title: "Team Meeting", start: "2025-01-22" },
-  { title: "Project Deadline", start: "2025-01-23" },
-];
-
-const headerToolbar = {
-  start: "prev,next today",
-  center: "title",
-  end: "dayGridMonth,dayGridWeek,dayGridDay",
-};
-
-const eventClassNames = (info) => {
-  return "bg-Robin5 text-white   "; // Tailwind styles
-};
-
 import z from "./Images/checked.png";
 
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 
-export function DemoApp() {
-  return (
-    <div>
-      <FullCalendar
-        plugins={[dayGridPlugin]}
-        initialView="dayGridMonth"
-        weekends={false}
-        events={calendarEvents}
-        headerToolbar={headerToolbar}
-        eventClassNames={eventClassNames}
-      />
-    </div>
-  );
-}
-
-function renderEventContent(eventInfo) {
-  return (
-    <>
-      <b>{eventInfo.timeText}</b>
-      <i>{eventInfo.event.title}</i>
-    </>
-  );
-}
-
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
   const [indiviualTodos, SetIndiviualTodos] = useState([]);
-
+  console.log(indiviualTodos);
   const mutauion = useMutation((newUser) =>
     axios.post(`${BACKENDSERVER}/users/CreateUser`, newUser)
   );
@@ -78,10 +39,55 @@ export function IndiviualTodo() {
   useEffect(() => {
     GetAllIndivualTodos();
   }, []);
+  var arrayEvents = [];
+  for (let i = 0; i < indiviualTodos.length; i++) {
+    if (localStorage.getItem("Username") == indiviualTodos[i]["username"]) {
+      var time = indiviualTodos[i]["createdAt"];
+      time = time.slice(0, 9);
+      arrayEvents.push({
+        title: indiviualTodos[i]["title"],
+        start: time,
+      });
+    }
+  }
 
   function SubmitData() {
     mutauion.mutate({ username });
     localStorage.setItem("Username", username);
+  }
+
+  // const calendarEvents = arrayEvents;
+  console.log("HERER IS THE RFOLW : ", arrayEvents);
+  const calendarEvents = [
+    {
+      title: "Adasd",
+      start: "2025-01-22",
+    },
+    {
+      title: "asdasdas",
+      start: "2025-01-21",
+    },
+  ];
+  console.log("Calenda everns : ", calendarEvents);
+  const headerToolbar = {
+    start: "prev,next today",
+    center: "title",
+    end: "dayGridMonth,dayGridWeek,dayGridDay",
+  };
+
+  function DemoApp() {
+    return (
+      <div>
+        <FullCalendar
+          plugins={[dayGridPlugin]}
+          initialView="dayGridMonth"
+          weekends={false}
+          events={calendarEvents}
+          headerToolbar={headerToolbar}
+          eventClassNames="bg-Robin5 text-white   "
+        />
+      </div>
+    );
   }
 
   return (
