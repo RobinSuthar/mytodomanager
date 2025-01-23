@@ -2,13 +2,61 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import Popup from "reactjs-popup";
-import x from "./Images/icons8-add-48.png";
+import x from "./Images/newtick.png";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import done from "./Images/tick.png";
 import NotDone from "./Images/circleWithoutHover.png";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+
+import editor from "./Images/editor.png";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
+
+const events = [{ title: "Meeting", start: new Date() }];
+
+const calendarEvents = [
+  { title: "Team Meeting", start: "2025-01-22" },
+  { title: "Project Deadline", start: "2025-01-23" },
+];
+
+const headerToolbar = {
+  start: "prev,next today",
+  center: "title",
+  end: "dayGridMonth,dayGridWeek,dayGridDay",
+};
+
+const eventClassNames = (info) => {
+  return "bg-Robin5 text-white   "; // Tailwind styles
+};
+
 import z from "./Images/checked.png";
-import cross from "./Images/wrong.png";
+
 const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
+
+export function DemoApp() {
+  return (
+    <div>
+      <FullCalendar
+        plugins={[dayGridPlugin]}
+        initialView="dayGridMonth"
+        weekends={false}
+        events={calendarEvents}
+        headerToolbar={headerToolbar}
+        eventClassNames={eventClassNames}
+      />
+    </div>
+  );
+}
+
+function renderEventContent(eventInfo) {
+  return (
+    <>
+      <b>{eventInfo.timeText}</b>
+      <i>{eventInfo.event.title}</i>
+    </>
+  );
+}
 
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
@@ -77,28 +125,64 @@ export function IndiviualTodo() {
           <></>
         ) : (
           <div className="flex  flex-col justify-center">
-            <div className="flex justify-center">
-              <div className="font-bold  mt-12 text-3xl text-gray-100">
-                Welcome, {localStorage.getItem("Username")}
+            <div className="flex  mt-16 ml-32">
+              <div>
+                <div className="h-20 mr-4  w-20">
+                  <img src={editor} alt="" />
+                </div>
+
+                <div className="font-extrabold ml-4  mt-2 text-5xl text-gray-100">
+                  Welcome, {localStorage.getItem("Username")}
+                </div>
+                <div className="m-5">
+                  <div className="text-Robin5 font-bold">
+                    {" "}
+                    Your personalized To-Do Section!{" "}
+                  </div>
+                  <ol className="font-bold mt-4 text-Robin5 list-disc">
+                    <li>
+                      Add Tasks: Click the + New button to create a new to-do.
+                      Provide a clear title, a detailed description, and set an
+                      importance level (1-5) to prioritize your task
+                    </li>
+
+                    <li>
+                      {" "}
+                      Private Dashboard: All tasks in this section are
+                      completely private to your account, ensuring you can
+                      manage your responsibilities securely and without
+                      distractions. Organize your tasks with ease, stay
+                      productive, and take control of your personal workflow!
+                    </li>
+                  </ol>
+                </div>
+                <Popup
+                  trigger={
+                    <div className="flex mt-2  p-2 bg-blue-600 h-9 w-32 text-gray-300 rounded-lg ">
+                      <div className="font-Notion text-sm  font-bold ml-2 ">
+                        Add Todo
+                      </div>
+                      <div className="flex flex-col">
+                        <div className="border-2 border-gray-400 h-6 ml-2"></div>
+                      </div>
+                      <div className="">
+                        <img className="h-5 w-6  ml-1" src={x} alt="" />{" "}
+                      </div>
+                    </div>
+                  }
+                  position="down center"
+                >
+                  <AddIndiviualTodo></AddIndiviualTodo>
+                </Popup>
+                <div className="border-b-2 border-gray-700 mt-3 mr-20"></div>
               </div>
             </div>
-            <Popup
-              trigger={
-                <div className="md:mt-16 mt-4 flex ">
-                  <div>
-                    <button className="">
-                      <img height={24} width={36} src={x} alt="" />{" "}
-                    </button>
-                  </div>
-                  <div className="text-xl font md:mr-28   font-semibold text-green-400 ml-2 mt-1">
-                    Add Personal Todo
-                  </div>
-                </div>
-              }
-              position="down center"
-            >
-              <AddIndiviualTodo></AddIndiviualTodo>
-            </Popup>
+
+            <div className="flex mt-4 justify-center">
+              <div className="bg-Robin2 text-gray-300  rounded-3xl text-sm w-8/12 h-auto p-4 ">
+                <DemoApp> </DemoApp>
+              </div>
+            </div>
           </div>
         )}
 
