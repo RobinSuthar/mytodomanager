@@ -2,18 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import Popup from "reactjs-popup";
-import x from "./Images/newtick.png";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import done from "./Images/tick.png";
 import NotDone from "./Images/circleWithoutHover.png";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-
+import x from "./Images/newtick.png";
 import editor from "./Images/Editor.png";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
-
-const events = [{ title: "Meeting", start: new Date() }];
 
 import z from "./Images/checked.png";
 
@@ -22,7 +17,8 @@ const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
   const [indiviualTodos, SetIndiviualTodos] = useState([]);
-  console.log(indiviualTodos);
+  var arrayEvents = [];
+  console.log("INITIAL ARRAY : ", arrayEvents);
   const mutauion = useMutation((newUser) =>
     axios.post(`${BACKENDSERVER}/users/CreateUser`, newUser)
   );
@@ -34,28 +30,27 @@ export function IndiviualTodo() {
     );
 
     SetIndiviualTodos(AllTodosWithGlobalType.data.allTodosWithIndiviualType);
+    for (let i = 0; i < indiviualTodos.length; i++) {
+      var time = indiviualTodos[i]["createdAt"];
+      time = time.slice(0, 9);
+      arrayEvents.push({
+        title: indiviualTodos[i]["title"],
+        start: time,
+      });
+
+      console.log("INSIDE THE FUNCTION ARRAY : ", arrayEvents);
+    }
   }
 
   useEffect(() => {
     GetAllIndivualTodos();
   }, []);
-  var arrayEvents = [];
-  for (let i = 0; i < indiviualTodos.length; i++) {
-    var time = indiviualTodos[i]["createdAt"];
-    time = time.slice(0, 9);
-    arrayEvents.push({
-      title: indiviualTodos[i]["title"],
-      start: time,
-    });
-  }
 
   function SubmitData() {
     mutauion.mutate({ username });
     localStorage.setItem("Username", username);
   }
 
-  // const calendarEvents = arrayEvents;
-  console.log("HERER IS THE RFOLW : ", arrayEvents);
   const calendarEvents = [
     {
       title: "Adasd",
@@ -65,8 +60,12 @@ export function IndiviualTodo() {
       title: "asdasdas",
       start: "2025-01-21",
     },
+    {
+      title: "asdasdas",
+      start: "2025-01-19",
+    },
   ];
-  console.log("Calenda everns : ", calendarEvents);
+
   const headerToolbar = {
     start: "prev,next today",
     center: "title",
@@ -78,13 +77,15 @@ export function IndiviualTodo() {
   };
 
   function DemoApp() {
+    console.log("DEMO APP ARRAY : ", arrayEvents);
+
     return (
       <div>
         <FullCalendar
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
-          weekends={false}
-          events={calendarEvents}
+          weekends={true}
+          events={arrayEvents}
           headerToolbar={headerToolbar}
           eventClassNames={eventClassNames}
         />
