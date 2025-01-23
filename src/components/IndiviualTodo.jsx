@@ -66,30 +66,8 @@ export function IndiviualTodo() {
       }
     });
 
-    console.log(events);
-    // const events = indiviualTodos.map((todo) => ({
-    //   title: todo.title,
-    //   start: todo.createdAt.slice(0, 10),
-    // }));
-
-    console.log(events);
     setCalendatEvents(events);
   }, [indiviualTodos]);
-
-  // const calendarEvents = [
-  //   {
-  //     title: "Adasd",
-  //     start: "2025-01-22",
-  //   },
-  //   {
-  //     title: "asdasdas",
-  //     start: "2025-01-21",
-  //   },
-  //   {
-  //     title: "asdasdas",
-  //     start: "2025-01-19",
-  //   },
-  // ];
 
   const headerToolbar = {
     start: "prev,next today",
@@ -98,7 +76,7 @@ export function IndiviualTodo() {
   };
 
   const eventClassNames = (info) => {
-    return " bg-blue-500 hover:bg-green-500 font-semibold text-Notion text-gray-300   "; // Tailwind styles
+    return " bg-blue-500 hover:bg-green-500 hover:cursor-pointer font-semibold text-Notion text-gray-300   "; // Tailwind styles
   };
 
   for (let i = 0; i < indiviualTodos.length; i++) {
@@ -371,11 +349,12 @@ function AddIndiviualTodo() {
         }}
       ></input>
       <button
-        className="font-Robin text-xl hover:border-2 hover:border-green-400 p-1 rounded-2xl text-green-400"
+        className="flex p-2 bg-blue-600 h-9 w-30 text-gray-300 rounded-lg "
         onClick={submitData}
       >
-        {" "}
-        Submit
+        <div className="font-Notion text-sm  font-bold hover:text-white ">
+          Add Todo
+        </div>
       </button>
     </div>
   );

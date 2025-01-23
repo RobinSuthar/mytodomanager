@@ -83,10 +83,12 @@ export function AddTodo() {
         }}
       ></input>
       <button
-        className="font-Robin text-xl hover:border-2 "
+        className="flex p-2 bg-blue-600 h-9 w-30 text-gray-300 rounded-lg "
         onClick={handleClick}
       >
-        Submit
+        <div className="font-Notion text-sm  font-bold hover:text-white ">
+          Add Todo
+        </div>
       </button>
     </div>
   );
