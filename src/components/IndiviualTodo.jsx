@@ -98,7 +98,7 @@ export function IndiviualTodo() {
   };
 
   const eventClassNames = (info) => {
-    return "bg-Robin5 text-white   "; // Tailwind styles
+    return " bg-blue-500 hover:bg-green-500 font-semibold text-Notion text-gray-300   "; // Tailwind styles
   };
 
   for (let i = 0; i < indiviualTodos.length; i++) {
@@ -254,7 +254,7 @@ export function IndiviualTodo() {
             </div>
 
             <div className="flex mt-4 justify-center">
-              <div className="bg-Robin2 text-gray-300  rounded-3xl text-sm w-8/12 h-auto p-4 ">
+              <div className="bg-Robin2 text-gray-300  rounded-3xl text-sm w-8/12 h-auto p-8 ">
                 <DemoApp></DemoApp>
               </div>
             </div>
