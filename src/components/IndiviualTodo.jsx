@@ -17,6 +17,8 @@ const BACKENDSERVER = import.meta.env.VITE_BACKEND_SERVER;
 export function IndiviualTodo() {
   const [username, setUsername] = useState("");
   const [indiviualTodos, SetIndiviualTodos] = useState([]);
+  const [calendarEvents, setCalendatEvents] = useState([]);
+
   var arrayEvents = [];
   console.log("INITIAL ARRAY : ", arrayEvents);
   const mutauion = useMutation((newUser) =>
@@ -30,16 +32,6 @@ export function IndiviualTodo() {
     );
 
     SetIndiviualTodos(AllTodosWithGlobalType.data.allTodosWithIndiviualType);
-    for (let i = 0; i < indiviualTodos.length; i++) {
-      var time = indiviualTodos[i]["createdAt"];
-      time = time.slice(0, 9);
-      arrayEvents.push({
-        title: indiviualTodos[i]["title"],
-        start: time,
-      });
-
-      console.log("INSIDE THE FUNCTION ARRAY : ", arrayEvents);
-    }
   }
 
   useEffect(() => {
@@ -51,20 +43,53 @@ export function IndiviualTodo() {
     localStorage.setItem("Username", username);
   }
 
-  const calendarEvents = [
-    {
-      title: "Adasd",
-      start: "2025-01-22",
-    },
-    {
-      title: "asdasdas",
-      start: "2025-01-21",
-    },
-    {
-      title: "asdasdas",
-      start: "2025-01-19",
-    },
-  ];
+  useEffect(() => {
+    // console
+    // for (let i = 0; i < indiviualTodos.length; i++) {
+    //   if (indiviualTodos[i]["isCompleted"] == false) {
+    //     var events = {
+    //       titlt: indiviualTodos[i]["title"],
+    //       start: indiviualTodos[i]["createdAt"].slice(0, 10),
+    //     };
+    //   }
+    // }
+    var events = [];
+    indiviualTodos.map(function (eachTodo) {
+      if (!eachTodo["isCompleted"]) {
+        events.push({
+          title: eachTodo["title"],
+          start: eachTodo["createdAt"].slice(0, 10),
+        });
+        console.log("FALSE: ", eachTodo);
+      } else {
+        console.log("True  :", eachTodo);
+      }
+    });
+
+    console.log(events);
+    // const events = indiviualTodos.map((todo) => ({
+    //   title: todo.title,
+    //   start: todo.createdAt.slice(0, 10),
+    // }));
+
+    console.log(events);
+    setCalendatEvents(events);
+  }, [indiviualTodos]);
+
+  // const calendarEvents = [
+  //   {
+  //     title: "Adasd",
+  //     start: "2025-01-22",
+  //   },
+  //   {
+  //     title: "asdasdas",
+  //     start: "2025-01-21",
+  //   },
+  //   {
+  //     title: "asdasdas",
+  //     start: "2025-01-19",
+  //   },
+  // ];
 
   const headerToolbar = {
     start: "prev,next today",
@@ -76,8 +101,43 @@ export function IndiviualTodo() {
     return "bg-Robin5 text-white   "; // Tailwind styles
   };
 
+  for (let i = 0; i < indiviualTodos.length; i++) {
+    var time = indiviualTodos[i]["createdAt"];
+    time = time.slice(0, 9);
+    arrayEvents.push({
+      title: indiviualTodos[i]["title"],
+      start: time,
+    });
+  }
+
+  async function x() {
+    return arrayEvents;
+  }
+
   function DemoApp() {
-    console.log("DEMO APP ARRAY : ", arrayEvents);
+    const handleEventClick = async (eventClickInfo) => {
+      const eventTitle = eventClickInfo.event.title;
+      console.log(eventTitle);
+      // Find the corresponding todo item
+      const todoToUpdate = indiviualTodos.find(
+        (todo) => todo.title === eventTitle
+      );
+
+      if (todoToUpdate) {
+        try {
+          // Update the todo's status to "completed" on the backend
+          await axios.put(`${BACKENDSERVER}/IndiviualTodos/Completed`, {
+            id: todoToUpdate._id,
+            isCompleted: true,
+          });
+
+          // Reload the data to update the UI
+          GetAllIndivualTodos();
+        } catch (error) {
+          console.error("Error updating the todo:", error);
+        }
+      }
+    };
 
     return (
       <div>
@@ -85,9 +145,10 @@ export function IndiviualTodo() {
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
           weekends={true}
-          events={arrayEvents}
+          events={calendarEvents}
           headerToolbar={headerToolbar}
           eventClassNames={eventClassNames}
+          eventClick={handleEventClick} // Attach the eventClick handler
         />
       </div>
     );
@@ -198,7 +259,7 @@ export function IndiviualTodo() {
 
             <div className="flex mt-4 justify-center">
               <div className="bg-Robin2 text-gray-300  rounded-3xl text-sm w-8/12 h-auto p-4 ">
-                <DemoApp> </DemoApp>
+                <DemoApp></DemoApp>
               </div>
             </div>
           </div>
@@ -219,16 +280,17 @@ export function IndiviualTodo() {
               var isCompleted = EachElemet.isCompleted;
               if (!isCompleted) {
                 return (
-                  <div key={EachElemet._id}>
-                    <div>
-                      <DisplayIndiviualTodos
-                        title={EachElemet.title}
-                        description={EachElemet.description}
-                        isCompleted={EachElemet.isCompleted}
-                        id={EachElemet._id}
-                      ></DisplayIndiviualTodos>{" "}
-                    </div>
-                  </div>
+                  // <div key={EachElemet._id}>
+                  //   <div>
+                  //     <DisplayIndiviualTodos
+                  //       title={EachElemet.title}
+                  //       description={EachElemet.description}
+                  //       isCompleted={EachElemet.isCompleted}
+                  //       id={EachElemet._id}
+                  //     ></DisplayIndiviualTodos>{" "}
+                  //   </div>
+                  // </div>
+                  <></>
                 );
               } else {
                 return;
