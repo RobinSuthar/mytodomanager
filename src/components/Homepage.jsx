@@ -55,9 +55,9 @@ export function HomePage() {
   );
 
   return (
-    <div className="bg-Robin">
+    <div className="bg min-h-screen max-h-full bg-Robin">
       {loading && (
-        <div className="flex h-screen justify-center bg-R  ">
+        <div className="flex  justify-center bg-R  ">
           <div className="mt-80">
             <WhisperSpinner></WhisperSpinner>
           </div>
@@ -70,7 +70,7 @@ export function HomePage() {
               id="LeftSideDiv
               "
             >
-              <div className="w-64 p-2 text-gray-400 h-screen bg-Robin3 ">
+              <div className="w-64 p-2 text-gray-400 min-h-screen max-h-full bg-Robin3 ">
                 <div className=" font-Notion flex  md:justify-start md:text-left m-2 gap-2  md:mt-5">
                   <img
                     className="h-6 w-6  rounded-md "
@@ -86,10 +86,10 @@ export function HomePage() {
               </div>
             </div>
           </div>
-          <div>
+          <div className="min-h-screen max-h-full bg-Robin">
             <div
               id="RightSideDiv "
-              className="font-Notion h-screen bg-Robin4 text-gray-300 gap-2 "
+              className="font-Notion  bg-Robin4 text-gray-300 gap-2 "
             >
               <div className="flex-col h-full bg-Robin4 justify-center md:ml-26  ">
                 <Main></Main>
@@ -186,7 +186,7 @@ function DisplayGlobalTodos(props) {
     }, 100);
   }
   return (
-    <div className="font-Notion text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
+    <div className="  font-Notion text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
       <div className="">
         <div className="flex">
           <button onClick={UpdateTodo}>

@@ -6,7 +6,7 @@ import setting from "../Images/setting.png";
 
 export function Selection() {
   return (
-    <div className="font-Notion text-gray-400   flex md:flex-col mt-3  text-sm md:text-xl text-left">
+    <div className="font-Notion  text-gray-400   flex md:flex-col mt-3  text-sm md:text-xl text-left">
       <div className="  flex flex-row  justify-left md  mt-1 hover:bg-Robin3 p-2 hover:rounded-lg">
         <Link to="/">
           <div className="flex flex-row">
