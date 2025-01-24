@@ -142,15 +142,15 @@ export function IndiviualTodo() {
       <div className=" ">
         <LeftSideNavBar></LeftSideNavBar>
       </div>
-      <div className=" w-screen bg-Robin4">
+      <div className=" w-screen  bg-Robin4 flex justify-center">
         {!localStorage.getItem("Username") ? (
-          <div className="mt-10 md:mt-52">
+          <div className="mt-10 h-screen md:mt-72">
             <h1 className="md:text-2xl text-xl">
               Please Enter Your Name to Proceed
             </h1>
 
             <input
-              className="w-full  mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
+              className="w-56 text-white mt-4 pl-3 pr-10 py-2 bg-transparent placeholder:text-slate-400 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
               placeholder="Type Here..."
               type="text"
               id="Username"
@@ -158,11 +158,21 @@ export function IndiviualTodo() {
                 setUsername(e.target.value);
               }}
             ></input>
+            <button onClick={SubmitData}>
+              {" "}
+              {!localStorage.getItem("Username") ? (
+                <div className="flex ml-6  flex-col font-Notion text-White hover:text-Robin5 gap-2 mt-2 p-1 rounded-xl bg-blue-600">
+                  <h1 className="text-xl ">Submit</h1>
+                </div>
+              ) : (
+                ""
+              )}
+            </button>
           </div>
         ) : (
           ""
         )}
-
+        {/* 
         <button onClick={SubmitData}>
           {" "}
           {!localStorage.getItem("Username") ? (
@@ -173,7 +183,7 @@ export function IndiviualTodo() {
           ) : (
             ""
           )}
-        </button>
+        </button> */}
         {!localStorage.getItem("Username") ? (
           <></>
         ) : (
