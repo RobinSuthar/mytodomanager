@@ -3,13 +3,13 @@ import axios from "axios";
 import { useMutation } from "react-query";
 import { LeftSideNavBar } from "./NavigationBar/LeftSideNavBar";
 import { Main } from "./Hero/Main";
-import tickiamge from "./Images/wrong.png";
+
 import done from "./Images/tick.png";
 import NotDone from "./Images/wrong.png";
-import { PushSpinner, WhisperSpinner } from "react-spinners-kit";
-import Banner from "./Images/Banner12.png";
+import { WhisperSpinner } from "react-spinners-kit";
+
 import Banner2 from "./Images/hcs2.png";
-import newTick from "./Images/newtick.png";
+
 import { AddTodo } from "./NavigationBar/AddTodo";
 
 import { Selection } from "./NavigationBar/Selection";
@@ -55,7 +55,7 @@ export function HomePage() {
   );
 
   return (
-    <div className="bg min-h-screen max-h-full bg-Robin">
+    <div className="bg md:min-h-screen md:max-h-full bg-Robin">
       {loading && (
         <div className="flex  justify-center bg-R  ">
           <div className="mt-80">
@@ -70,7 +70,7 @@ export function HomePage() {
               id="LeftSideDiv
               "
             >
-              <div className=" p-2 text-gray-400 min-h-screen max-h-full bg-Robin3 ">
+              <div className=" p-2 text-gray-400 md:min-h-screen md:max-h-full bg-Robin3 ">
                 <div className=" font-Notion flex  md:justify-start md:text-left m-2 gap-2  md:mt-5">
                   <img
                     className="h-6 w-6  rounded-md "
@@ -94,13 +94,17 @@ export function HomePage() {
               <div className="flex-col h-full bg-Robin4 justify-center md:ml-26  ">
                 <Main></Main>
                 <div className="max-w-full border-b-2 border-Robin2">
-                  <img className="h-36 w-full " src={Banner2} alt="" />
+                  <img
+                    className="h-36 md:w-full w-screen"
+                    src={Banner2}
+                    alt=""
+                  />
                 </div>
-                <div className="flex flex-col  justify-center mt-10 ml-24">
+                <div className="flex flex-col  justify-center mt-10 md:ml-24 ml-2">
                   <div className="font-Notion text-3xl font-extrabold">
                     <div>GLOBAL TODO</div>
                   </div>
-                  <div className="mr-48 mb-2">
+                  <div className="md:mr-48 mb-2">
                     Stay organized with your to-do website! The Global To-Do
                     Page allows everyone to view and interact with tasks created
                     today, fostering collaboration and accountability. Tasks are
@@ -113,8 +117,11 @@ export function HomePage() {
                   <AddTodo></AddTodo>
                   <div className="border-b-2 border-gray-700 mt-2 mr-20"></div>
                 </div>
-                <div className="flex flex-row md:gap-20 gap-12 md:ml-24">
-                  <div id="One" className="grid   lg:grid-cols-6   lg:gap-6">
+                <div className="flex flex-row justify-center md:gap-20 gap-12 md:ml-24">
+                  <div
+                    id="One"
+                    className="grid  grid-cols-2 ml-  lg:grid-cols-6 mb-2  gap-4 lg:gap-6"
+                  >
                     {globaltodos.map((EachElemet) => {
                       var isCompleted = EachElemet.isCompleted;
                       if (!isCompleted) {
@@ -186,7 +193,7 @@ function DisplayGlobalTodos(props) {
     }, 100);
   }
   return (
-    <div className="  font-Notion text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
+    <div className=" mt-2 mb-2 font-Notion text-gray-300 bg-Robin2   flex border-2 p-3 border-Robin2 rounded-xl ">
       <div className="">
         <div className="flex">
           <button onClick={UpdateTodo}>
