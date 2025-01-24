@@ -73,7 +73,7 @@ export function Organization() {
               <div id="sada" className="h-full">
                 <div className="ml-12 text-left">
                   <div className=" mt-12 flex  text-left mb-4 ">
-                    <h1 className="text-7xl font-bold font-Notion ">
+                    <h1 className="md:text-7xl text-5xl font-bold font-Notion ">
                       {localStorage.getItem("Companyname")}
                     </h1>
                   </div>
