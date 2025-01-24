@@ -188,16 +188,16 @@ export function IndiviualTodo() {
           <></>
         ) : (
           <div className="flex  flex-col justify-center">
-            <div className="flex  mt-16 ml-32">
+            <div className="flex mt-4 md:mt-16 md:ml-32 ml-4">
               <div>
-                <div className="h-20 mr-4  w-20">
+                <div className="md:h-20 md:mr-4 ml-2 h-12 w-8  md:w-20">
                   <img src={editor} alt="" />
                 </div>
 
-                <div className="font-extrabold ml-4  mt-2 text-5xl text-gray-100">
+                <div className="font-extrabold ml-4  md:mt-2 md:text-5xl text-2xl text-gray-100">
                   Welcome, {localStorage.getItem("Username")}
                 </div>
-                <div className="m-5">
+                <div className="md:m-5 m-3">
                   <div className="text-Robin5 font-bold">
                     {" "}
                     Your personalized To-Do Section!{" "}
@@ -221,7 +221,7 @@ export function IndiviualTodo() {
                 </div>
                 <Popup
                   trigger={
-                    <div className="flex mt-2  p-2 bg-blue-600 h-9 w-32 text-gray-300 rounded-lg ">
+                    <div className="flex md:mt-2 mt-4 ml-4 p-2 bg-blue-600 h-9 w-32 text-gray-300 rounded-lg ">
                       <div className="font-Notion text-sm  font-bold ml-2 ">
                         Add Todo
                       </div>
@@ -242,7 +242,7 @@ export function IndiviualTodo() {
             </div>
 
             <div className="flex mt-4 justify-center">
-              <div className="bg-Robin2 text-gray-300  rounded-3xl text-sm w-8/12 h-auto p-8 ">
+              <div className="bg-Robin2 text-gray-300  rounded-3xl text-sm md:w-8/12 md:h-auto md:p-8 p-12 ">
                 <DemoApp></DemoApp>
               </div>
             </div>
