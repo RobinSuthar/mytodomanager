@@ -22,7 +22,7 @@ export function DisplayAllCompanyTodo() {
     SetCompanyTodos(AllTodos.data.allTodosByCompany);
   }
   return (
-    <div className="ml-8 mt-5">
+    <div className="ml-8 mt-5 ">
       <div className="flex flex-row  font-Notion  ">
         {!localStorage.getItem("Companyname") ? (
           <></>
