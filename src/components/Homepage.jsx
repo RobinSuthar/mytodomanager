@@ -55,9 +55,9 @@ export function HomePage() {
   );
 
   return (
-    <div className="bg md:min-h-screen md:max-h-full bg-Robin">
+    <div className=" h-screen md:min-h-screen md:max-h-full bg-Robin">
       {loading && (
-        <div className="flex  justify-center bg-R  ">
+        <div className="flex  justify-center  ">
           <div className="mt-80">
             <WhisperSpinner></WhisperSpinner>
           </div>
