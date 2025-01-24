@@ -95,16 +95,16 @@ export function HomePage() {
                 <Main></Main>
                 <div className="max-w-full border-b-2 border-Robin2">
                   <img
-                    className="h-36 md:w-full w-screen"
+                    className="h-20  md:h-36 md:w-full w-screen"
                     src={Banner2}
                     alt=""
                   />
                 </div>
-                <div className="flex flex-col  justify-center mt-10 md:ml-24 ml-2">
+                <div className="flex  flex-col p-1 justify-center mt-2 md:mt-10 md:ml-24 ml-2">
                   <div className="font-Notion text-3xl font-extrabold">
                     <div>GLOBAL TODO</div>
                   </div>
-                  <div className="md:mr-48 mb-2">
+                  <div className="md:mr-48 mb-2 p-1">
                     Stay organized with your to-do website! The Global To-Do
                     Page allows everyone to view and interact with tasks created
                     today, fostering collaboration and accountability. Tasks are
@@ -120,7 +120,7 @@ export function HomePage() {
                 <div className="flex flex-row justify-center md:gap-20 gap-12 md:ml-24">
                   <div
                     id="One"
-                    className="grid  grid-cols-2 ml-  lg:grid-cols-6 mb-2  gap-4 lg:gap-6"
+                    className="grid  grid-cols-2 ml-  lg:grid-cols-6 mb-2  gap-2 lg:gap-6"
                   >
                     {globaltodos.map((EachElemet) => {
                       var isCompleted = EachElemet.isCompleted;
@@ -197,12 +197,19 @@ function DisplayGlobalTodos(props) {
       <div className="">
         <div className="flex">
           <button onClick={UpdateTodo}>
-            <img src={isCompleted ? done : NotDone} height={4} width={16}></img>
+            <img
+              className="md:h-4 md:w-4 h-3 w-3"
+              src={isCompleted ? done : NotDone}
+            ></img>
           </button>
-          <h1 className="text-lg font-normal ml-6">{props.title}</h1>
+          <h1 className="md:text-lg text-2xl font-normal ml-6">
+            {props.title}
+          </h1>
         </div>
 
-        <h3 className="text-xs font-extralight ml-10">{props.description}</h3>
+        <h3 className="text-base md:text-xs font-extralight ml-10">
+          {props.description}
+        </h3>
       </div>
     </div>
   );
