@@ -44,8 +44,8 @@ export function DisplayAllCompanyTodo() {
           // </div>
         )}
       </div>
-      <div className="ml-4">
-        <div className="grid grid-cols-3 gap-8">
+      <div className="md:ml-4">
+        <div className="grid grid-r md:grid-cols-3 gap-8">
           {CompanyTodos.map((EachElemet) => {
             var isCompleted = EachElemet.isCompleted;
             if (!isCompleted) {
