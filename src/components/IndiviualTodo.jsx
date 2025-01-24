@@ -20,7 +20,7 @@ export function IndiviualTodo() {
   const [calendarEvents, setCalendatEvents] = useState([]);
 
   var arrayEvents = [];
-  console.log("INITIAL ARRAY : ", arrayEvents);
+
   const mutauion = useMutation((newUser) =>
     axios.post(`${BACKENDSERVER}/users/CreateUser`, newUser)
   );
@@ -44,15 +44,6 @@ export function IndiviualTodo() {
   }
 
   useEffect(() => {
-    // console
-    // for (let i = 0; i < indiviualTodos.length; i++) {
-    //   if (indiviualTodos[i]["isCompleted"] == false) {
-    //     var events = {
-    //       titlt: indiviualTodos[i]["title"],
-    //       start: indiviualTodos[i]["createdAt"].slice(0, 10),
-    //     };
-    //   }
-    // }
     var events = [];
     indiviualTodos.map(function (eachTodo) {
       if (!eachTodo["isCompleted"]) {
@@ -60,9 +51,6 @@ export function IndiviualTodo() {
           title: eachTodo["title"],
           start: eachTodo["createdAt"].slice(0, 10),
         });
-        console.log("FALSE: ", eachTodo);
-      } else {
-        console.log("True  :", eachTodo);
       }
     });
 
@@ -76,7 +64,7 @@ export function IndiviualTodo() {
   };
 
   const eventClassNames = (info) => {
-    return " bg-blue-500 hover:bg-green-500 hover:cursor-pointer font-semibold text-Notion text-gray-300   "; // Tailwind styles
+    return " bg-blue-500 hover:bg-green-500 hover:cursor-pointer  font-semibold text-Notion text-gray-300   "; // Tailwind styles
   };
 
   for (let i = 0; i < indiviualTodos.length; i++) {
@@ -91,7 +79,7 @@ export function IndiviualTodo() {
   function DemoApp() {
     const handleEventClick = async (eventClickInfo) => {
       const eventTitle = eventClickInfo.event.title;
-      console.log(eventTitle);
+      console.log("GOT CLICKED : ", eventTitle);
       // Find the corresponding todo item
       const todoToUpdate = indiviualTodos.find(
         (todo) => todo.title === eventTitle
@@ -100,12 +88,16 @@ export function IndiviualTodo() {
       if (todoToUpdate) {
         try {
           // Update the todo's status to "completed" on the backend
-          await axios.put(`${BACKENDSERVER}/IndiviualTodos/Completed`, {
-            id: todoToUpdate._id,
-            isCompleted: true,
-          });
-
+          const a = await axios.put(
+            `${BACKENDSERVER}/IndiviualTodos/Completed`,
+            {
+              id: todoToUpdate._id,
+              isCompleted: true,
+            }
+          );
+          console.log(a);
           // Reload the data to update the UI
+
           GetAllIndivualTodos();
         } catch (error) {
           console.error("Error updating the todo:", error);
@@ -260,7 +252,7 @@ export function IndiviualTodo() {
               //   <div className="text-lg  font-Bungee  mt-1">Over Due</div>
               // </div>
             )}
-            {indiviualTodos.map((EachElemet) => {
+            {/* {indiviualTodos.map((EachElemet) => {
               var isCompleted = EachElemet.isCompleted;
               if (!isCompleted) {
                 return (
@@ -278,8 +270,8 @@ export function IndiviualTodo() {
                 );
               } else {
                 return;
-              }
-            })}
+              } */}
+            {/* })} */}
           </div>
 
           <div>

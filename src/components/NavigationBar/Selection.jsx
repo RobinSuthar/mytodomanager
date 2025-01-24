@@ -11,7 +11,7 @@ export function Selection() {
         <Link to="/">
           <div className="flex flex-row">
             <div className="mt-1">
-              <img className="md:h-6 md:w-6 h-7 w-12" src={Home} alt="" />
+              <img className="md:h-6 mr-3 md:w-6 h-7 w-12" src={Home} alt="" />
             </div>
             <div className="md:text-sm text-base font-semibold  mt-3     rounded-xl    md:mt-2">
               {" "}
@@ -24,9 +24,13 @@ export function Selection() {
         <Link to="/personal">
           <div className="flex flex-row">
             <div>
-              <img className="md:h-6 md:w-6 h-7 w-12" src={personal} alt="" />
+              <img
+                className="md:h-6 mr-3 md:w-6 h-7 w-12"
+                src={personal}
+                alt=""
+              />
             </div>
-            <div className="text-base font-semibold  mt-2 md:text-sm   rounded-2xl  md:mt-4 ">
+            <div className="text-base font-semibold  mt-2 md:text-sm   rounded-2xl  md:mt-1 ">
               {" "}
               Personal{" "}
             </div>
@@ -38,7 +42,11 @@ export function Selection() {
         <Link to="/organization" className="">
           <div className="flex flex-row">
             <div>
-              <img className="md:h-6 md:w-6 h-7 w-12" src={store} alt="" />
+              <img
+                className="md:h-6  mr-3 md:w-6 h-7 w-12"
+                src={store}
+                alt=""
+              />
             </div>
             <div className=" text-base  md:text-sm  mt-2 font-semibold    rounded-2xl md:mt-2     ">
               Company{" "}
@@ -51,7 +59,11 @@ export function Selection() {
         <Link to="/organization" className="">
           <div className="flex flex-row">
             <div>
-              <img className="md:h-6 md:w-6 h-7  w-12" src={setting} alt="" />
+              <img
+                className="md:h-6 mr-3 md:w-6 h-7  w-12"
+                src={setting}
+                alt=""
+              />
             </div>
             <div className="text-base md:text-sm  mt-2 font-semibold    rounded-2xl md:mt-2">
               Setting{" "}

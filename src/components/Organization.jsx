@@ -31,7 +31,7 @@ export function Organization() {
       <div>
         {!localStorage.getItem("Companypin") ? (
           <div className=" md:ml-28 h-screen mt-8 ">
-            <div className="ml-72 ">
+            <div className="md:ml-72  ml-24">
               <div className="mt-60">
                 <div className="flex  flex-col justify-center ">
                   <input
