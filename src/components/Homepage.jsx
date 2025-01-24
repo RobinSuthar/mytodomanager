@@ -64,13 +64,13 @@ export function HomePage() {
         </div>
       )}
       {!loading && (
-        <div className="md:grid   bg-black md:grid-cols-[14rem,8fr] text-white  ">
+        <div className="md:grid   bg-black md:grid-cols-[16rem,8fr] text-white  ">
           <div className="bg-Robin2 border-r-2 border-gray-700 ">
             <div
               id="LeftSideDiv
               "
             >
-              <div className="w-64 p-2 text-gray-400 min-h-screen max-h-full bg-Robin3 ">
+              <div className=" p-2 text-gray-400 min-h-screen max-h-full bg-Robin3 ">
                 <div className=" font-Notion flex  md:justify-start md:text-left m-2 gap-2  md:mt-5">
                   <img
                     className="h-6 w-6  rounded-md "
