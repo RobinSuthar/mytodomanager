@@ -26,4 +26,7 @@
 - How will we make sure and changes get updates will lest renders ?
 - For Now I'm working on back end Logic
 - Everthing is inetgreated and wokring fine
-- W
+
+Eveything is wokring with better UI and is Deployed on 
+www.mytodomanager.com
+
